@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Обласна клінічна лікарня — Харків</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* ═══════════════════════════════════════════════════
+   ОКЛ · Харків  |  UI v3.0
+   Navy #1a2236 · Steel-blue #2e6da4 · Sage #2a8a6e
+   ═══════════════════════════════════════════════════ */
+:root {
+  --ink:      #10192b; --ink-80:rgba(16,25,43,.80); --ink-60:rgba(16,25,43,.60);
+  --ink-30:rgba(16,25,43,.30); --ink-12:rgba(16,25,43,.12); --ink-06:rgba(16,25,43,.06);
+  --blue:     #2e6da4; --blue-d:#1f4f7a; --blue-l:#4589c0;
+  --blue-10:rgba(46,109,164,.10); --blue-18:rgba(46,109,164,.18);
+  --sage:     #2a8a6e; --sage-l:#38b08d; --sage-10:rgba(42,138,110,.10);
+  --navy:     #1a2236; --navy-l:#243047;
+  --surface:  #f5f7fb; --surface2:#eef2f8; --white:#ffffff;
+  --ff-d:'DM Serif Display',Georgia,serif; --ff-b:'Outfit',system-ui,sans-serif;
+  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:30px; --r-pill:999px;
+  --sh-xs:0 2px 8px rgba(16,25,43,.07); --sh-sm:0 4px 16px rgba(16,25,43,.09);
+  --sh-md:0 8px 28px rgba(16,25,43,.12); --sh-lg:0 18px 48px rgba(16,25,43,.16);
+  --sh-xl:0 28px 72px rgba(16,25,43,.20);
+  --ease:cubic-bezier(.22,.68,0,1.2); --t:.22s;
+  --hh:72px; --mw:1200px; --gap:clamp(16px,3.5vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--ff-b);font-size:16px;line-height:1.6;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+p{margin:0 0 14px} h1,h2,h3,h4{margin:0 0 .5em;line-height:1.15;letter-spacing:-.02em}
+button{font-family:var(--ff-b);cursor:pointer} input,textarea{font-family:var(--ff-b)}
+.container{width:min(var(--mw),100% - var(--gap)*2);margin-inline:auto}
+.section{padding:clamp(48px,7vw,88px) 0}
+.section--surface{background:var(--surface)} .section--surface2{background:var(--surface2)}
+.section--tight{padding:clamp(32px,4vw,52px) 0}
+.section__header{margin-bottom:clamp(28px,4vw,48px)}
+.section__kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.section__kicker::before{content:'';display:block;width:20px;height:2px;background:var(--sage);border-radius:2px}
+.section__title{font-family:var(--ff-d);font-size:clamp(26px,3.2vw,44px);color:var(--ink);margin:0 0 14px}
+.section__lead{font-size:clamp(15px,1.4vw,17px);color:var(--ink-60);max-width:580px;line-height:1.75;margin:0}
+.section__cta{margin-top:32px}
+.srOnly{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.muted{color:var(--ink-60)} .mt{margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:var(--r-pill);font-size:14px;font-weight:700;border:1.5px solid transparent;transition:all var(--t) ease;user-select:none;white-space:nowrap;cursor:pointer}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--blue);color:var(--white);box-shadow:0 8px 20px rgba(46,109,164,.28)}
+.btn--primary:hover{background:var(--blue-l);box-shadow:0 12px 28px rgba(46,109,164,.36)}
+.btn--sage{background:var(--sage);color:var(--white);box-shadow:0 8px 20px rgba(42,138,110,.25)}
+.btn--sage:hover{background:var(--sage-l)}
+.btn--outline{background:transparent;border-color:rgba(46,109,164,.35);color:var(--blue)}
+.btn--outline:hover{background:var(--blue-10);border-color:var(--blue)}
+.btn--ghost{background:var(--ink-06);color:var(--ink);border-color:var(--ink-12)}
+.btn--ghost:hover{background:var(--ink-12)}
+.btn--wide{width:100%;justify-content:center} .btn--sm{height:38px;padding:0 16px;font-size:13px}
+.btn--lg{height:56px;padding:0 30px;font-size:16px}
+.btn__icon{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:13px}
+/* HEADER */
+.siteHeader{position:sticky;top:0;z-index:500;height:var(--hh);background:rgba(255,255,255,.94);backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid var(--ink-06);box-shadow:var(--sh-xs);transition:box-shadow var(--t) ease}
+.siteHeader.scrolled{box-shadow:var(--sh-sm)}
+.siteHeader__inner{height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.siteBrand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.siteBrand__logo{width:44px;height:44px;border-radius:var(--r-sm);background:var(--navy) url('assets/okl_logo.png') center/72% no-repeat;border:1px solid var(--ink-12);flex-shrink:0}
+.siteBrand__text{font-family:var(--ff-d);font-size:16px;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+@media(max-width:600px){.siteBrand__text{display:none}}
+.topNav{display:flex;gap:2px;align-items:center}
+.topNav a{color:var(--ink-80);font-weight:600;font-size:13.5px;padding:7px 11px;border-radius:var(--r-sm);transition:all var(--t) ease}
+.topNav a:hover,.topNav a.is-active{color:var(--blue);background:var(--blue-10)}
+@media(max-width:960px){.topNav{display:none}}
+.siteHeader__actions{display:flex;align-items:center;gap:10px}
+.searchBtn{height:36px;padding:0 14px;border-radius:var(--r-pill);border:1.5px solid var(--ink-12);background:var(--surface);color:var(--ink-60);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:7px;transition:all var(--t) ease}
+.searchBtn:hover{border-color:var(--blue-18);color:var(--blue);background:var(--blue-10)}
+.navBtn{width:44px;height:44px;border-radius:var(--r-md);border:1.5px solid var(--ink-12);background:var(--surface);display:grid;place-items:center;transition:all var(--t) ease}
+.navBtn:hover{background:var(--surface2);border-color:var(--ink-30)}
+.navBtn__icon{font-size:22px;color:var(--ink);line-height:1}
+/* DRAWER */
+.navOverlay{position:fixed;inset:0;background:rgba(16,25,43,.46);backdrop-filter:blur(8px);z-index:9998;opacity:0;transition:opacity var(--t) ease;pointer-events:none}
+.navOverlay.visible{opacity:1;pointer-events:auto}
+.navDrawer{position:fixed;top:10px;right:10px;bottom:10px;width:min(460px,calc(100vw - 20px));background:rgba(255,255,255,.97);backdrop-filter:blur(24px);border:1px solid var(--ink-12);border-radius:var(--r-xl);box-shadow:var(--sh-xl);z-index:9999;transform:translateX(110%);transition:transform .38s var(--ease);display:grid;grid-template-rows:auto auto auto 1fr auto;overflow:hidden}
+.navDrawer.isOpen{transform:translateX(0)}
+.navDrawer__top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px;border-bottom:1px solid var(--ink-06)}
+.navDrawer__title{display:flex;align-items:center;gap:12px}
+.navDrawer__logo{width:40px;height:40px;border-radius:var(--r-sm);background:var(--navy) url('assets/okl_logo.png') center/72% no-repeat;border:1px solid var(--ink-12);flex-shrink:0}
+.navDrawer__name{font-weight:800;font-size:14px;color:var(--ink)} .navDrawer__sub{color:var(--ink-60);font-size:12px}
+.navClose{width:44px;height:44px;border-radius:var(--r-md);border:1.5px solid var(--ink-12);background:var(--surface);display:grid;place-items:center;font-size:18px;transition:all var(--t) ease}
+.navClose:hover{background:var(--surface2)}
+.navDrawer__search{padding:12px 16px;border-bottom:1px solid var(--ink-06)}
+.navDrawer__search input{width:100%;height:44px;border-radius:var(--r-md);border:1.5px solid var(--ink-12);padding:0 14px;font-size:14px;background:var(--surface);outline:none;transition:all var(--t) ease}
+.navDrawer__search input:focus{border-color:rgba(46,109,164,.45);box-shadow:0 0 0 3px var(--blue-10)}
+#navQuick{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px 14px;border-bottom:1px solid var(--ink-06)}
+.chip{padding:8px 14px;border-radius:var(--r-pill);background:var(--blue-10);border:1.5px solid var(--blue-18);color:var(--blue);font-weight:700;font-size:12px;text-decoration:none;transition:all var(--t) ease;display:inline-block}
+.chip:hover{background:var(--blue);color:var(--white);border-color:var(--blue)} .chip.isActive{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.chip--ghost{background:var(--surface);border-color:var(--ink-12);color:var(--ink-60)} .chip--ghost:hover{background:var(--surface2);color:var(--ink)} .ai-chip{cursor:pointer}
+.navList{overflow:auto;padding:10px 10px 14px}
+.navLink,.navGroup{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:var(--r-md);border:1.5px solid transparent;background:transparent;font-weight:700;font-size:15px;color:var(--ink);text-align:left;text-decoration:none;transition:all var(--t) ease}
+.navLink:hover,.navGroup:hover{background:var(--blue-10);border-color:var(--blue-18);color:var(--blue)}
+.navLink.isActive,.navSub a.isActive{background:var(--blue-10);border-color:var(--blue-18);color:var(--blue)}
+.navGroup.isActiveGroup{background:var(--sage-10);border-color:rgba(42,138,110,.18)}
+.chev{opacity:.5;transition:transform var(--t) ease;font-size:11px} .navGroup.isOpen .chev{transform:rotate(180deg);opacity:.8}
+.navSub{height:0;overflow:hidden;margin:0 8px 6px;border-radius:var(--r-md);background:var(--surface);border:1.5px solid var(--ink-06);transition:height .3s ease}
+.navSub__inner{padding:6px}
+.navSub a{display:block;padding:9px 11px;border-radius:var(--r-sm);color:var(--ink-80);font-weight:600;font-size:14px;transition:all var(--t) ease}
+.navSub a:hover{background:var(--blue-10);color:var(--blue)}
+.navDrawer__bottom{padding:10px 16px 14px;border-top:1px solid var(--ink-06)} .navHint{color:var(--ink-30);font-size:12px}
+@media(max-width:520px){.navDrawer{top:6px;right:6px;left:6px;bottom:6px;width:auto;border-radius:var(--r-lg)}}
+/* HERO */
+.hero-main{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;color:var(--white)}
+.hero-main__bg{position:absolute;inset:0;background:url('assets/bg_logo.png') center/cover no-repeat}
+.hero-main__bg::before{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(16,25,43,.88) 0%,rgba(16,25,43,.72) 50%,rgba(16,25,43,.35) 100%)}
+.hero-main__content{position:relative;z-index:2;display:grid;grid-template-columns:1fr .52fr;gap:32px;align-items:center;padding:120px 0 80px}
+.hero-main__panel{max-width:640px}
+.hero-main__kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-l);margin-bottom:20px}
+.hero-main__kicker::before{content:'';width:20px;height:2px;background:var(--sage-l);border-radius:2px;display:block}
+.hero-main__title{font-family:var(--ff-d);margin:0 0 20px;font-size:clamp(38px,5.5vw,70px);line-height:1.02;color:var(--white)}
+.hero-main__accent{background:linear-gradient(120deg,#7dd8ff 0%,var(--sage-l) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-main__lead{margin:0 0 32px;font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.76);line-height:1.75}
+.hero-main__actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hero-main__stats{display:grid;gap:12px}
+.hero-main__stat{padding:20px 22px;border-radius:var(--r-lg);background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);transition:transform var(--t) ease,background var(--t) ease}
+.hero-main__stat:hover{transform:translateX(-5px);background:rgba(255,255,255,.18)}
+.hero-main__stat b{display:block;font-family:var(--ff-d);font-size:34px;color:var(--white);line-height:1;margin-bottom:4px}
+.hero-main__stat span{font-size:13.5px;color:rgba(255,255,255,.62)}
+@media(max-width:960px){.hero-main__content{grid-template-columns:1fr}.hero-main__stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.hero-main__content{padding:90px 0 56px}.hero-main__stats{grid-template-columns:1fr}.hero-main__actions{flex-direction:column}.hero-main__actions .btn{width:100%;justify-content:center}}
+/* CARDS */
+.section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.section-grid{grid-template-columns:1fr}}
+.info-card{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);background:var(--white);padding:22px 20px;box-shadow:var(--sh-xs);transition:all var(--t) ease}
+.info-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:var(--blue-18)}
+.info-card h3{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin:0 0 8px}
+.info-card p{margin:0;color:var(--ink-60);font-size:14px;line-height:1.65} .info-card a{color:var(--blue);font-weight:600} .info-card a:hover{text-decoration:underline}
+.gridIconCards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1100px){.gridIconCards{grid-template-columns:repeat(3,1fr)}} @media(max-width:860px){.gridIconCards{grid-template-columns:repeat(2,1fr)}}
+.iconCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);padding:26px 18px;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;background:var(--white);transition:all var(--t) ease;cursor:pointer}
+.iconCard:hover{border-color:var(--blue-18);box-shadow:var(--sh-md),0 0 0 4px var(--blue-10);transform:translateY(-4px)}
+.iconCard img{width:58px;height:58px;opacity:.7;transition:all var(--t) ease} .iconCard img.is-muted{filter:grayscale(1) brightness(.25)}
+.iconCard h3{font-size:13.5px;text-align:center;max-width:150px;color:var(--ink);margin:0}
+.serviceCards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:1100px){.serviceCards{grid-template-columns:repeat(2,1fr)}} @media(max-width:640px){.serviceCards{grid-template-columns:1fr}}
+.serviceCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);overflow:hidden;background:var(--white);box-shadow:var(--sh-xs);transition:all var(--t) ease}
+.serviceCard:hover{transform:translateY(-5px);box-shadow:var(--sh-lg);border-color:var(--blue-18)}
+.serviceCard__img{aspect-ratio:16/9;overflow:hidden;position:relative}
+.serviceCard__img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(16,25,43,.35) 0%,transparent 55%)}
+.serviceCard__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.serviceCard:hover .serviceCard__img img{transform:scale(1.05)}
+.serviceCard__body{padding:18px 20px 20px} .serviceCard__body h3{font-size:17px;color:var(--ink);margin-bottom:8px}
+.serviceCard__body p{color:var(--ink-60);margin:0;font-size:14px;line-height:1.65}
+.deptFilter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.deptFilter__btn{height:36px;padding:0 18px;border-radius:var(--r-pill);border:1.5px solid var(--ink-12);background:var(--white);color:var(--ink-60);font-size:13px;font-weight:700;transition:all var(--t) ease}
+.deptFilter__btn:hover{border-color:var(--blue-18);color:var(--blue);background:var(--blue-10)} .deptFilter__btn.is-active{background:var(--blue);border-color:var(--blue);color:var(--white)}
+/* DOCTORS */
+.doctorSearch{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;align-items:center}
+.doctorSearch__input{flex:1;min-width:200px;height:46px;border:1.5px solid var(--ink-12);border-radius:var(--r-md);padding:0 16px;font-size:15px;outline:none;transition:all var(--t) ease}
+.doctorSearch__input:focus{border-color:var(--blue-l);box-shadow:0 0 0 3px var(--blue-10)}
+.doctorsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.doctorCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);background:var(--white);overflow:hidden;box-shadow:var(--sh-xs);transition:all var(--t) ease;display:flex;flex-direction:column}
+.doctorCard:hover{transform:translateY(-5px);box-shadow:var(--sh-lg);border-color:var(--blue-18)}
+.doctorCard[hidden]{display:none}
+.doctorCard__photo{aspect-ratio:3/2.2;overflow:hidden;background:linear-gradient(135deg,var(--blue-10),var(--sage-10));display:flex;align-items:center;justify-content:center;position:relative}
+.doctorCard__photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.doctor-initials{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sage));display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--white)}
+.doctorCard__dept{position:absolute;bottom:10px;left:10px;padding:5px 10px;border-radius:var(--r-pill);background:rgba(16,25,43,.72);backdrop-filter:blur(8px);color:var(--white);font-size:11px;font-weight:700}
+.doctorCard__body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column}
+.doctorCard__name{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.doctorCard__spec{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:10px}
+.doctorCard__info{font-size:13px;color:var(--ink-60);line-height:1.6;flex:1} .doctorCard__actions{margin-top:14px}
+/* TEAM */
+.teamGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:860px){.teamGrid{grid-template-columns:1fr}}
+.teamCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);background:var(--white);padding:22px;box-shadow:var(--sh-xs);transition:all var(--t) ease}
+.teamCard:hover{box-shadow:var(--sh-md);border-color:var(--blue-18)}
+.teamCard__top{display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:start;margin-bottom:12px}
+.teamCard__top h3{font-size:17px;color:var(--ink);margin-bottom:6px} .teamCard__text{color:var(--ink-60);font-size:14px;line-height:1.65;margin-bottom:16px}
+.avatar{width:88px;height:88px;border-radius:var(--r-md);object-fit:cover;border:2px solid var(--ink-12)}
+@media(max-width:500px){.teamCard__top{grid-template-columns:72px 1fr}.avatar{width:72px;height:72px}}
+/* ADMIN */
+.adminGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.adminCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);background:var(--white);overflow:hidden;box-shadow:var(--sh-xs);transition:all var(--t) ease;text-align:center}
+.adminCard:hover{box-shadow:var(--sh-md);border-color:var(--blue-18);transform:translateY(-3px)}
+.adminCard__photo{height:200px;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--blue-d) 100%);display:flex;align-items:center;justify-content:center}
+.adminCard__photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.admin-initials{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:var(--white)}
+.adminCard__body{padding:16px 18px 20px} .adminCard__name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.adminCard__role{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:8px;line-height:1.4} .adminCard__phone{font-size:13px;color:var(--ink-60)} .adminCard__phone a{color:var(--blue);font-weight:600}
+/* INNER */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.list-check{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.list-check li{position:relative;padding-left:26px;color:var(--ink-60);font-size:15px;line-height:1.65}
+.list-check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--sage);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:640px){.stats{grid-template-columns:1fr}}
+.stat{padding:18px;border-radius:var(--r-md);background:var(--white);border:1.5px solid var(--ink-12)}
+.stat b{font-family:var(--ff-d);font-size:28px;color:var(--blue);display:block;margin-bottom:4px}
+.timeline{display:grid;gap:12px}
+.timeline__item{padding:14px 18px;background:var(--white);border:1.5px solid var(--ink-12);border-left:3px solid var(--blue);border-radius:0 var(--r-sm) var(--r-sm) 0}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);background:var(--blue-10);color:var(--blue);font-size:12px;font-weight:700}
+.linksList{margin-top:24px;border-top:1px solid var(--ink-06)}
+.linkRow{display:flex;align-items:center;justify-content:space-between;padding:17px 8px;border-bottom:1px solid var(--ink-06);font-size:16px;font-weight:500;color:var(--ink);transition:all var(--t) ease}
+.linkRow:hover{color:var(--blue);padding-left:18px} .linkRow span:first-child{flex:1}
+.arrow{font-size:20px;opacity:.4;transition:all var(--t) ease} .linkRow:hover .arrow{opacity:1;transform:translateX(4px)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:1100px){.reviews{grid-template-columns:repeat(2,1fr)}} @media(max-width:700px){.reviews{grid-template-columns:1fr}}
+.reviewCard{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);padding:22px;background:var(--white);box-shadow:var(--sh-xs);transition:all var(--t) ease}
+.reviewCard:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:var(--blue-18)}
+.reviewCard p{color:var(--ink);font-weight:500;font-size:15px;margin:0 0 12px}
+.reviewMeta{display:flex;align-items:center;gap:10px} .reviewMeta .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);flex-shrink:0}
+/* PAGE HERO */
+.page-hero{padding:clamp(40px,6vw,72px) 0 clamp(28px,4vw,44px);background:var(--surface);border-bottom:1px solid var(--ink-06);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(46,109,164,.06) 0%,transparent 70%)}
+.page-hero__title{font-family:var(--ff-d);font-size:clamp(28px,3.5vw,46px);color:var(--ink);margin:0 0 12px}
+.page-hero__lead{font-size:17px;color:var(--ink-60);max-width:820px;line-height:1.75;margin:0}
+.breadcrumbs{display:flex;gap:8px;font-size:13px;color:var(--ink-30);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumbs a{color:var(--blue);font-weight:600} .breadcrumbs a:hover{text-decoration:underline}
+/* ACCORDION */
+.accordion{border:1.5px solid var(--ink-12);border-radius:var(--r-lg);overflow:hidden}
+.accordion__item{border-bottom:1px solid var(--ink-06)} .accordion__item:last-child{border-bottom:0}
+.accordion__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:var(--white);border:0;font-size:16px;font-weight:600;text-align:left;color:var(--ink);transition:background var(--t) ease;cursor:pointer}
+.accordion__trigger:hover{background:var(--surface)} .accordion__icon{font-size:22px;line-height:1;color:var(--ink-30);transition:transform var(--t) ease;flex-shrink:0}
+.accordion__item.is-open .accordion__icon{transform:rotate(45deg);color:var(--blue)}
+.accordion__body{display:none;padding:0 20px 18px;color:var(--ink-60);font-size:15px;line-height:1.75}
+.accordion__item.is-open .accordion__body{display:block}
+/* TABLE */
+.table-wrap{border-radius:var(--r-md);overflow:auto;border:1.5px solid var(--ink-12);box-shadow:var(--sh-xs)}
+.table{width:100%;border-collapse:collapse;background:var(--white)}
+.table th,.table td{padding:13px 16px;border-bottom:1px solid var(--ink-06);text-align:left}
+.table th{background:var(--surface);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-60)}
+.table tr:hover td{background:var(--surface)} .table tr:last-child td{border-bottom:0}
+/* CONTACT BLOCK */
+.contact{background:var(--navy);color:var(--white)}
+.contact__inner{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;padding:clamp(48px,7vw,88px) 0 clamp(32px,5vw,64px)}
+.contact__left h2{font-family:var(--ff-d);font-size:clamp(28px,3.5vw,44px);margin:0 0 28px;color:var(--white)}
+@media(max-width:860px){.contact__inner{grid-template-columns:1fr}}
+.contact__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start}
+@media(max-width:700px){.contact__cols{grid-template-columns:1fr 1fr}} @media(max-width:480px){.contact__cols{grid-template-columns:1fr}}
+.col h3{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.38);margin:0 0 10px}
+.col p,.col ul{color:rgba(255,255,255,.6);font-size:14px;margin:0} .col ul{list-style:none;padding:0;display:grid;gap:7px}
+.col ul li a{color:rgba(255,255,255,.6);transition:color var(--t) ease} .col ul li a:hover{color:var(--white)}
+.col .phone a{font-size:17px;font-weight:700;color:var(--white)}
+.col .linksInline{display:flex;gap:10px;flex-wrap:wrap}
+.col .linksInline a{color:rgba(255,255,255,.6);font-weight:600;font-size:14px;transition:color var(--t) ease} .col .linksInline a:hover{color:var(--white)}
+.form{display:grid;gap:12px}
+.field input{width:100%;height:46px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--r-md);color:var(--white);padding:0 14px;font-size:15px;font-family:var(--ff-b);outline:none;transition:all var(--t) ease}
+.field input::placeholder{color:rgba(255,255,255,.35)} .field input:focus{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28)}
+.contact__bottom{background:rgba(0,0,0,.22);padding:16px 0 18px;border-top:1px solid rgba(255,255,255,.08)}
+.bottomRow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bottomRow span,.bottomRow a{font-size:13px;color:rgba(255,255,255,.3)} .bottomRow a:hover{color:rgba(255,255,255,.6)}
+/* FOOTER */
+.site-footer{background:var(--navy);color:var(--white);padding:clamp(48px,7vw,80px) 0 0}
+.footer__inner{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px;align-items:start;padding-bottom:clamp(32px,4vw,56px)}
+@media(max-width:1100px){.footer__inner{grid-template-columns:1fr 1fr 1fr}} @media(max-width:800px){.footer__inner{grid-template-columns:1fr 1fr;gap:28px}} @media(max-width:500px){.footer__inner{grid-template-columns:1fr;gap:24px}}
+.footer__logo-wrap{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.footer__logo-img{width:50px;height:50px;border-radius:var(--r-sm);background:var(--navy-l) url('assets/okl_logo.png') center/76% no-repeat;border:1px solid rgba(255,255,255,.12);flex-shrink:0}
+.footer__brand-name{font-family:var(--ff-d);font-size:16px;color:var(--white);line-height:1.25} .footer__brand-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:3px}
+.footer__desc{font-size:14px;color:rgba(255,255,255,.52);line-height:1.7;margin-bottom:18px}
+.footer__socials{display:flex;gap:10px}
+.footer__social{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);font-size:13px;font-weight:700;display:grid;place-items:center;transition:all var(--t) ease;text-decoration:none}
+.footer__social:hover{background:var(--blue);border-color:var(--blue);color:var(--white)}
+.footer__col h4{font-size:11.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.38);margin:0 0 16px}
+.footer__col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px} .footer__col ul li a{color:rgba(255,255,255,.62);font-size:14px;transition:color var(--t) ease} .footer__col ul li a:hover{color:var(--white)}
+.footer__contact-item{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.footer__contact-item .label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.footer__contact-item a,.footer__contact-item span{font-size:14px;color:rgba(255,255,255,.68);transition:color var(--t) ease} .footer__contact-item a:hover{color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.08);padding:16px 0 18px;background:rgba(0,0,0,.18)}
+.footer__bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer__bottom-inner span,.footer__bottom-inner a{font-size:13px;color:rgba(255,255,255,.28)} .footer__bottom-inner a:hover{color:rgba(255,255,255,.6)}
+/* MISC */
+.scrollTop{position:fixed;left:20px;bottom:20px;z-index:1200;width:42px;height:42px;border:0;border-radius:var(--r-sm);background:var(--navy);color:var(--white);font-size:18px;display:none;box-shadow:var(--sh-md);transition:all var(--t) ease}
+.scrollTop.is-visible{display:inline-flex;align-items:center;justify-content:center} .scrollTop:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease} .reveal.isIn{opacity:1;transform:translateY(0)}
+/* SEARCH */
+.siteSearch{position:fixed;inset:0;display:none;z-index:1200} .siteSearch.is-open{display:block}
+.siteSearch__overlay{position:absolute;inset:0;background:rgba(16,25,43,.52);backdrop-filter:blur(4px)}
+.siteSearch__panel{position:relative;width:min(760px,92vw);margin:7vh auto 0;background:var(--white);border-radius:var(--r-xl);border:1.5px solid var(--ink-12);box-shadow:var(--sh-xl);padding:20px 20px 16px}
+.siteSearch__head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.siteSearch__head h3{margin:0;font-family:var(--ff-d);font-size:20px}
+.siteSearch__close{width:34px;height:34px;border-radius:var(--r-pill);border:1.5px solid var(--ink-12);background:var(--surface);cursor:pointer}
+.siteSearch__input{width:100%;height:50px;border-radius:var(--r-md);border:1.5px solid var(--ink-12);padding:0 16px;font-size:16px;outline:none;font-family:var(--ff-b)}
+.siteSearch__input:focus{border-color:rgba(46,109,164,.45);box-shadow:0 0 0 4px var(--blue-10)}
+.siteSearch__meta{margin:12px 0 8px;font-size:13px;color:var(--ink-30)}
+.siteSearch__results{max-height:54vh;overflow:auto;display:grid;gap:10px;padding-right:4px}
+.siteSearch__result{border:1.5px solid var(--ink-12);border-radius:var(--r-md);padding:14px;background:var(--white);transition:all var(--t) ease}
+.siteSearch__result:hover{border-color:var(--blue-18);background:var(--surface)}
+.siteSearch__result h4{margin:0 0 5px;font-size:15px} .siteSearch__result p{margin:0;color:var(--ink-60);font-size:13px}
+/* AI */
+#ai-trigger{position:fixed;bottom:28px;right:28px;z-index:1200}
+.ai-fab{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,var(--blue-d),var(--sage));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 32px rgba(46,109,164,.38);transition:all var(--t) ease;position:relative}
+.ai-fab:hover{transform:scale(1.08);box-shadow:0 14px 40px rgba(46,109,164,.48)} .ai-fab svg{width:26px;height:26px;fill:var(--white)}
+.ai-ring{position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(42,138,110,.5);animation:aiRing 2.5s ease-in-out infinite;pointer-events:none}
+.ai-badge{position:absolute;right:74px;top:50%;transform:translateY(-50%);background:var(--navy);color:var(--white);border-radius:var(--r-pill);padding:7px 16px;white-space:nowrap;font-size:12px;font-weight:600;box-shadow:var(--sh-md)}
+.ai-badge::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:var(--navy);border-right:none}
+#ai-panel{position:fixed;bottom:104px;right:28px;z-index:1199;width:380px;max-width:calc(100vw - 32px);max-height:82vh;background:var(--white);border:1.5px solid var(--ink-12);border-radius:var(--r-xl);box-shadow:var(--sh-xl);display:none;overflow:hidden;flex-direction:column}
+#ai-panel.open{display:flex;animation:aiUp .28s var(--ease)}
+.ai-hdr{background:linear-gradient(135deg,var(--navy),var(--blue-d));padding:18px 20px;display:flex;align-items:center;gap:13px;flex-shrink:0}
+.ai-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue-l),var(--sage));color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+.ai-hdr-txt strong{display:block;color:var(--white);font-size:15px;margin-bottom:3px} .ai-hdr-txt span{color:rgba(255,255,255,.58);font-size:12px;display:flex;align-items:center;gap:5px}
+.ai-dot{width:7px;height:7px;background:var(--sage-l);border-radius:50%;animation:aiPulse 2s infinite;display:inline-block}
+.ai-x{margin-left:auto;width:32px;height:32px;border-radius:var(--r-sm);border:none;background:rgba(255,255,255,.12);color:var(--white);font-size:16px;transition:background var(--t) ease} .ai-x:hover{background:rgba(255,255,255,.22)}
+.ai-warn{background:rgba(212,160,23,.08);color:#7a5200;border-bottom:1px solid rgba(212,160,23,.16);padding:9px 16px;font-size:12px;line-height:1.45;text-align:center}
+.ai-msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:10px;max-width:90%} .msg.user{margin-left:auto;flex-direction:row-reverse}
+.bubble{padding:12px 15px;border-radius:var(--r-md);font-size:14px;line-height:1.5}
+.msg.bot .bubble{background:var(--surface);color:var(--ink);border-bottom-left-radius:4px}
+.msg.user .bubble{background:linear-gradient(135deg,var(--blue-d),var(--blue));color:var(--white);border-bottom-right-radius:4px}
+.msg-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--blue-d),var(--sage));color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:10px 14px} .typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--ink-30);animation:aiBounce 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s} .typing-dots span:nth-child(3){animation-delay:.4s}
+.chips-area{display:flex;flex-wrap:wrap;gap:7px;padding:6px 16px 14px;flex-shrink:0}
+.ai-foot{padding:12px 16px;display:flex;gap:10px;border-top:1px solid var(--ink-06);flex-shrink:0}
+.ai-foot textarea{flex:1;resize:none;max-height:90px;line-height:1.5;border:1.5px solid var(--ink-12);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--ink);outline:none;transition:border-color var(--t) ease;font-family:var(--ff-b)}
+.ai-foot textarea:focus{border-color:var(--blue-l)}
+.ai-send{width:42px;height:42px;border:none;border-radius:var(--r-sm);cursor:pointer;background:linear-gradient(135deg,var(--blue-d),var(--blue));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(46,109,164,.28);transition:all var(--t) ease}
+.ai-send:hover{box-shadow:0 6px 20px rgba(46,109,164,.38)} .ai-send svg{width:18px;height:18px;fill:var(--white)}
+@media(max-width:768px){#ai-panel{bottom:0;right:0;left:0;max-width:100vw;max-height:88vh;border-radius:var(--r-xl) var(--r-xl) 0 0}#ai-trigger{bottom:20px;right:20px}.ai-badge{display:none}}
+@keyframes aiRing{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.55)}}
+@keyframes aiPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes aiBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+@keyframes aiUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  </style>
+</head>
+<body>
+  <div class="navOverlay" id="navOverlay"></div>
+  <aside class="navDrawer" id="navDrawer" aria-hidden="true">
+    <div class="navDrawer__top">
+      <div class="navDrawer__title">
+        <div class="navDrawer__logo"></div>
+        <div><div class="navDrawer__name">КНП ХОР «ОКЛ»</div><div class="navDrawer__sub">Харків · Незалежності, 13</div></div>
+      </div>
+      <button class="navClose" id="navClose" aria-label="Закрити">✕</button>
+    </div>
+    <div class="navDrawer__search"><input id="navSearch" type="search" placeholder="Пошук по сайту…" autocomplete="off"></div>
+    <div class="navQuick" id="navQuick"></div>
+    <nav class="navList" id="navList"></nav>
+    <div class="navDrawer__bottom"><div class="navHint">Esc — закрити · клік по фону — закрити</div></div>
+  </aside>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero-main" id="home">
+      <div class="hero-main__bg"></div>
+      <div class="hero-main__content container">
+        <div class="hero-main__panel reveal">
+          <div class="hero-main__kicker">КНП ХОР · Харків · з 1950 року</div>
+          <h1 class="hero-main__title">
+            Обласна<br>клінічна<br><span class="hero-main__accent">Лікарня</span>
+          </h1>
+          <p class="hero-main__lead">Сучасний багатопрофільний медичний центр Харківщини. Понад 40 відділень, 1 200 фахівців, 250 000+ пацієнтів щорічно.</p>
+          <div class="hero-main__actions">
+            <a class="btn btn--primary btn--lg" href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener">
+              Записатися онлайн <span class="btn__icon">→</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="about.html">Про лікарню</a>
+          </div>
+        </div>
+        <div class="hero-main__stats">
+          <div class="hero-main__stat reveal">
+            <b>40+</b><span>відділень та служб</span>
+          </div>
+          <div class="hero-main__stat reveal">
+            <b>1 200+</b><span>кваліфікованих фахівців</span>
+          </div>
+          <div class="hero-main__stat reveal">
+            <b>250k+</b><span>пацієнтів щороку</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK INFO -->
+    <section class="section section--surface" id="quick-info">
+      <div class="container">
+        <div class="section-grid">
+          <div class="info-card reveal">
+            <h3>📞 Довідкова</h3>
+            <p><a href="tel:+380577056722">057 705-67-22</a> · <a href="tel:+380577047079">057 704-70-79</a></p>
+          </div>
+          <div class="info-card reveal">
+            <h3>🕐 Графік роботи</h3>
+            <p>Стаціонар: цілодобово<br>Поліклініка: Пн–Пт 08:00–15:42</p>
+          </div>
+          <div class="info-card reveal">
+            <h3>📍 Адреса</h3>
+            <p>пр. Незалежності, 13 (вхід з вул. Літературної)<br>м. Харків · Метро «Університет»</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Що ми пропонуємо</div>
+          <h2 class="section__title">Повний цикл медичної допомоги</h2>
+          <p class="section__lead">Від першої консультації до повного відновлення — все під одним дахом.</p>
+        </div>
+        <div class="section-grid">
+          <div class="info-card reveal">
+            <h3>🏥 Діагностика</h3>
+            <p>Клінічна лабораторія, УЗД, КТ, МРТ, рентгенологія, ендоскопія та функціональна діагностика.</p>
+          </div>
+          <div class="info-card reveal">
+            <h3>💊 Лікування</h3>
+            <p>40+ стаціонарних і амбулаторних відділень. Хірургія, терапія, неврологія, кардіологія.</p>
+          </div>
+          <div class="info-card reveal">
+            <h3>♻️ Реабілітація</h3>
+            <p>Сучасне відділення реабілітації з фізіотерапією та відновлювальним лікуванням.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPARTMENTS PREVIEW -->
+    <section class="section section--surface" id="departments">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Структура лікарні</div>
+          <h2 class="section__title">Наші підрозділи</h2>
+          <p class="section__lead">Широка мережа спеціалізованих відділень для надання допомоги будь-якого профілю.</p>
+        </div>
+        <div class="serviceCards">
+          <article class="serviceCard reveal">
+            <div class="serviceCard__img"><img src="assets/ph-1.jpg" alt="Поліклінічна служба" loading="lazy"></div>
+            <div class="serviceCard__body">
+              <h3>Поліклінічна служба</h3>
+              <p>Консультативна поліклініка та амбулаторна допомога. Запис через h24.ua або за телефоном.</p>
+            </div>
+          </article>
+          <article class="serviceCard reveal">
+            <div class="serviceCard__img"><img src="assets/ph-2.jpg" alt="Діагностика" loading="lazy"></div>
+            <div class="serviceCard__body">
+              <h3>Діагностичні відділення</h3>
+              <p>Лабораторія, УЗД, КТ, рентген, ендоскопія та функціональна діагностика.</p>
+            </div>
+          </article>
+          <article class="serviceCard reveal">
+            <div class="serviceCard__img"><img src="assets/ph-3.jpg" alt="Хірургія" loading="lazy"></div>
+            <div class="serviceCard__body">
+              <h3>Хірургічні відділення</h3>
+              <p>Нейрохірургія, серцево-судинна, загальна хірургія, голови та шиї.</p>
+            </div>
+          </article>
+        </div>
+        <div class="section__cta">
+          <a class="btn btn--outline" href="departments.html">Усі підрозділи →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIALISTS PREVIEW -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Наша команда</div>
+          <h2 class="section__title">Досвідчені фахівці</h2>
+          <p class="section__lead">Більше 1 200 лікарів та медичних працівників, що працюють за сучасними протоколами.</p>
+        </div>
+        <div class="teamGrid">
+          <article class="teamCard reveal">
+            <div class="teamCard__top">
+              <img class="avatar" src="assets/av-1.jpg" alt="Кушнірська Олена" loading="lazy">
+              <div>
+                <h3>Кушнірська Олена Іванівна</h3>
+                <p class="muted">Лікар-психіатр вищої категорії · 26 років досвіду</p>
+              </div>
+            </div>
+            <p class="teamCard__text">Спеціаліст з психіатрії та психотерапії. Застосовує сучасні підходи до діагностики та лікування психічних розладів.</p>
+            <a class="btn btn--outline btn--sm" href="contacts.html">Записатися</a>
+          </article>
+          <article class="teamCard reveal">
+            <div class="teamCard__top">
+              <img class="avatar" src="assets/av-2.jpg" alt="Петренко Василь" loading="lazy">
+              <div>
+                <h3>Петренко Василь Михайлович</h3>
+                <p class="muted">Кардіолог вищої категорії · 18 років досвіду</p>
+              </div>
+            </div>
+            <p class="teamCard__text">Провідний кардіолог лікарні. Спеціалізується на діагностиці та лікуванні серцево-судинних захворювань.</p>
+            <a class="btn btn--outline btn--sm" href="contacts.html">Записатися</a>
+          </article>
+        </div>
+        <div class="section__cta">
+          <a class="btn btn--outline" href="doctors.html">Всі лікарі →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLIC INFO -->
+    <section class="section section--surface" id="public">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Прозорість та відкритість</div>
+          <h2 class="section__title">Публічна інформація</h2>
+        </div>
+        <div class="reviews">
+          <article class="reviewCard reveal">
+            <p>Інформація щодо закупівель товарів та послуг. Оголошення, тендери та звіти.</p>
+            <div class="reviewMeta"><span class="dot"></span><span class="muted">Закупівлі</span></div>
+          </article>
+          <article class="reviewCard reveal">
+            <p>Надходження і використання благодійних пожертв.</p>
+            <div class="reviewMeta"><span class="dot"></span><span class="muted">Фінансова прозорість</span></div>
+          </article>
+          <article class="reviewCard reveal">
+            <p>Інформація про наявність медичних препаратів та витратних матеріалів.</p>
+            <div class="reviewMeta"><span class="dot"></span><span class="muted">Медикаменти</span></div>
+          </article>
+        </div>
+        <div class="section__cta">
+          <a class="btn btn--outline" href="public.html">Уся інформація →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="section" id="news">
+      <div class="container">
+        <div class="section__header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px">
+          <div>
+            <div class="section__kicker">Останні події</div>
+            <h2 class="section__title" style="margin-bottom:0">Новини лікарні</h2>
+          </div>
+          <a class="btn btn--outline" href="news.html">Всі новини →</a>
+        </div>
+        <div class="newsGrid" id="news-grid"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contacts">
+      <div class="container contact__inner">
+        <div class="contact__left">
+          <h2>Зв'яжіться<br>з нами</h2>
+          <form class="form" onsubmit="return false;">
+            <label class="field"><span class="srOnly">Ваше ім'я</span><input type="text" placeholder="Ваше ім'я"></label>
+            <label class="field"><span class="srOnly">Email</span><input type="email" placeholder="Email"></label>
+            <label class="field"><span class="srOnly">Телефон</span><input type="tel" placeholder="Номер телефону"></label>
+            <button class="btn btn--sage btn--wide" type="submit">Надіслати повідомлення</button>
+          </form>
+        </div>
+        <div class="contact__cols">
+          <div class="col">
+            <h3>Адреса</h3>
+            <p>пр. Незалежності, 13<br>м. Харків, 61058</p>
+            <h3 class="mt">Графік роботи</h3>
+            <p>Стаціонар: 24/7<br>Поліклініка: Пн–Пт 08:00–15:42</p>
+          </div>
+          <div class="col">
+            <h3>Соціальні мережі</h3>
+            <p class="linksInline">
+              <a href="https://www.instagram.com/okl_kharkiv/" target="_blank" rel="noopener">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">Telegram</a>
+            </p>
+            <h3 class="mt">Розділи</h3>
+            <ul>
+              <li><a href="about.html">Про лікарню</a></li>
+              <li><a href="doctors.html">Наші лікарі</a></li>
+              <li><a href="public.html">Публічна інформація</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Телефони</h3>
+            <p class="phone"><a href="tel:+380577056722">057 705-67-22</a></p>
+            <h3 class="mt">Запис онлайн</h3>
+            <p><a href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7);font-weight:600;">h24.ua →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="contact__bottom">
+        <div class="container bottomRow">
+          <span class="muted">© КНП ХОР «Обласна клінічна лікарня», Харків, 2026</span>
+          <a class="muted" href="#top">Вгору ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- SITE SEARCH -->
+  <div class="siteSearch" id="siteSearch" aria-hidden="true">
+    <div class="siteSearch__overlay" id="searchOverlay"></div>
+    <div class="siteSearch__panel" role="dialog" aria-modal="true">
+      <div class="siteSearch__head">
+        <h3>Пошук по сайту</h3>
+        <button class="siteSearch__close" id="searchClose">✕</button>
+      </div>
+      <input class="siteSearch__input" id="siteSearchInput" type="search" placeholder="Введіть прізвище лікаря або відділення">
+      <div class="siteSearch__meta" id="siteSearchMeta">Почніть вводити запит для пошуку</div>
+      <div class="siteSearch__results" id="siteSearchResults"></div>
+    </div>
+  </div>
+
+  <button id="scroll-top" class="scrollTop" aria-label="Вгору">↑</button>
+
+  <!-- AI CONSULTANT -->
+  <div id="ai-trigger">
+    <div class="ai-badge">Анна — медичний помічник</div>
+    <button id="ai-open-btn" class="ai-fab" aria-label="Відкрити ІІ-консультанта">
+      <div class="ai-ring"></div>
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    </button>
+  </div>
+  <div id="ai-panel">
+    <div class="ai-hdr">
+      <div class="ai-av">А</div>
+      <div class="ai-hdr-txt"><strong>Анна — медичний помічник</strong><span><span class="ai-dot"></span>Онлайн · КНП ХОР «ОКЛ»</span></div>
+      <button id="ai-close-btn" class="ai-x">✕</button>
+    </div>
+    <div class="ai-warn">Анна <strong>не ставить діагнозів</strong> і <strong>не призначає лікування</strong> — тільки допомагає знайти потрібного лікаря.</div>
+    <div class="ai-msgs" id="ai-messages">
+      <div class="msg bot"><div class="msg-av">А</div><div class="bubble">Вітаю! Я Анна — медичний помічник Обласної клінічної лікарні.<br><br>Опишіть симптоми або запитання — підкажу, до якого лікаря звернутися та як записатися. Я <strong>не ставлю діагнозів</strong>.</div></div>
+    </div>
+    <div class="chips-area" id="ai-chips">
+      <span class="chip ai-chip">Болить серце</span>
+      <span class="chip ai-chip">Проблеми зі зором</span>
+      <span class="chip ai-chip">Болить голова / спина</span>
+      <span class="chip ai-chip">Як записатися?</span>
+      <span class="chip ai-chip">Вагітність / гінекологія</span>
+      <span class="chip ai-chip">Цукровий діабет</span>
+    </div>
+    <div class="ai-foot">
+      <textarea id="ai-input" placeholder="Введіть запитання..." rows="1"></textarea>
+      <button id="ai-send-btn" class="ai-send" aria-label="Надіслати"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    </div>
+  </div>
+  <script>
+/* ОКЛ UI v3 · script.js */
+(function(){
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════
+   АІ-НАЛАШТУВАННЯ  |  Встановіть один із ключів перед script.js:
+
+   ВАРІАНТ 1 — Google Gemini (безкоштовно, aistudio.google.com):
+     window.OKL_GEMINI_KEY = 'AIza...';
+
+   ВАРІАНТ 2 — OpenAI / ChatGPT (platform.openai.com):
+     window.OKL_OPENAI_KEY = 'sk-...';
+
+   ВАРІАНТ 3 — Claude через серверний proxy (console.anthropic.com):
+     Встановити env ANTHROPIC_API_KEY на сервері.
+
+   Якщо жоден ключ не заданий — бот відповідає за локальними правилами.
+   ═══════════════════════════════════════════════════════════════ */
+
+var SYSTEM_PROMPT_LOCAL = "Ти Анна — медичний помічник КНП ХОР «Обласна клінічна лікарня» (ОКЛ) у Харкові, Україна.\n\nСУВОРІ ПРАВИЛА — НІКОЛИ НЕ ПОРУШУЙ:\n1. Ніколи не ставиш діагнозів і не вживаєш формулювань «у вас [хвороба]».\n2. Ніколи не призначаєш ліки, дозування або схеми лікування.\n3. При загрозливих симптомах (серцевий напад, інсульт, утруднене дихання, тяжка травма, втрата свідомості) — НЕГАЙНО рекомендуй телефонувати 103 або 112.\n\nЩО РОБИШ:\n- Визначаєш, до якого спеціаліста звернутися за симптомами пацієнта.\n- Надаєш інформацію про відділення та фахівців лікарні.\n- Розповідаєш як записатися на прийом.\n- Відповідаєш на питання про роботу лікарні, контакти, адресу, графік.\n- Відповідаєш на привітання та загальні питання ввічливо.\n\nВІДДІЛЕННЯ ЛІКАРНІ: Кардіологія, Неврологія (2 відділення), Офтальмологія, Ортопедія та травматологія, Ендокринологія, Ревматологія, Пульмонологія/Алергологія, Гастроентерологія, Нейрохірургія (2 відд.), Серцево-судинна хірургія, Загальна хірургія, Дерматовенерологія (2 відд.), Стоматологія (4 відд.), Гінекологія, Акушерство, Реабілітація, Гематологія, Нефрологія, Психіатрія.\n\nДІАГНОСТИКА: Клінічна лабораторія, УЗД та ехокардіографія, Рентген/КТ, Функціональна діагностика, Ендоскопія.\n\nКОНТАКТИ ОКЛ:\n- Реєстратура поліклініки: 057 705-66-91, 057 704-72-75\n- Мобільні: 093-972-75-02, 093-971-41-13\n- Довідкова: 057 705-67-22, 057 704-70-79\n- Жіноча консультація: 057 704-72-21\n- Онлайн-запис: h24.ua/organizacia/7856-knp-hor-okl\n- Адреса: м. Харків, пр. Незалежності, 13 (вхід з вул. Літературної, метро «Університет»)\n- Стаціонар: цілодобово 24/7 | Поліклініка: пн–пт 08:00–15:42\n\nВідповідай мовою співрозмовника (якщо пишуть українською — відповідай українською, якщо російською — російською). Будь теплою, лаконічною та корисною. Наприкінці кожної медичної відповіді рекомендуй особисто звернутися до лікаря.";
+
+function ready(fn){
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fn);}else{fn();}
+}
+
+ready(function(){
+
+  /* ══ HEADER SCROLL ══════════════════════════════════ */
+  var hdr = document.getElementById('siteHeader');
+  if(hdr){
+    window.addEventListener('scroll',function(){
+      hdr.classList.toggle('scrolled', window.scrollY > 40);
+    },{passive:true});
+  }
+
+  /* ══ SCROLL TOP ═════════════════════════════════════ */
+  var stBtn = document.getElementById('scroll-top');
+  if(stBtn){
+    window.addEventListener('scroll',function(){
+      stBtn.classList.toggle('is-visible', window.scrollY > 360);
+    },{passive:true});
+    stBtn.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+
+  /* ══ TOP NAV ACTIVE STATE ═══════════════════════════ */
+  var current = (window.location.pathname.split('/').pop()||'index.html').toLowerCase();
+  document.querySelectorAll('.topNav a').forEach(function(a){
+    var href = (a.getAttribute('href')||'').toLowerCase();
+    a.classList.toggle('is-active', href === current || (current==='' && href==='index.html'));
+  });
+
+  /* ══ NAV DRAWER ═════════════════════════════════════ */
+  var navBtn     = document.getElementById('navBtn');
+  var navDrawer  = document.getElementById('navDrawer');
+  var navOverlay = document.getElementById('navOverlay');
+  var navClose   = document.getElementById('navClose');
+  var navSearch  = document.getElementById('navSearch');
+  var navList    = document.getElementById('navList');
+  var navQuick   = document.getElementById('navQuick');
+
+  var MENU = {
+    quick:[
+      {label:'Записатися',href:'https://h24.ua/organizacia/7856-knp-hor-okl',type:'chip'},
+      {label:'Підрозділи',href:'departments.html',type:'chip'},
+      {label:'Лікарі',href:'doctors.html',type:'chip'},
+      {label:'Контакти',href:'contacts.html',type:'chip--ghost'}
+    ],
+    items:[
+      {type:'group',id:'about',label:'Про лікарню',children:[
+        {label:'Адміністрація',href:'about.html#administration'},
+        {label:'Ми сьогодні',href:'about.html#today'},
+        {label:'Історія лікарні',href:'about.html#history'},
+        {label:'Наші лікарі',href:'doctors.html'},
+        {label:'Ліцензії та сертифікати',href:'licenses.html'},
+        {label:'Вакансії',href:'vacancies.html'}
+      ]},
+      {type:'group',id:'depts',label:'Наші підрозділи',children:[
+        {label:'Поліклінічна служба',href:'departments.html#departments'},
+        {label:'Діагностичні відділення',href:'departments.html#departments'},
+        {label:'Хірургічні відділення',href:'departments.html#departments'},
+        {label:'Терапевтичні відділення',href:'departments.html#departments'},
+        {label:'Перинатальний профіль',href:'departments.html#departments'}
+      ]},
+      {type:'group',id:'patients',label:'Для пацієнтів',children:[
+        {label:"Права та обов'язки",href:'patients.html#rights'},
+        {label:'Порядок відвідування',href:'patients.html#visits'},
+        {label:'Госпіталізація',href:'patients.html#hospitalization'},
+        {label:'Платні послуги',href:'patients.html#paid'},
+        {label:'Прийом громадян',href:'patients.html#citizens'}
+      ]},
+      {type:'group',id:'public',label:'Публічна інформація',children:[
+        {label:'Закупівлі',href:'public.html#procurement'},
+        {label:'Благодійні пожертви',href:'public.html#donations'},
+        {label:'Медичні препарати',href:'public.html#meds'}
+      ]},
+      {type:'link',label:'Головна',href:'index.html'},
+      {type:'link',label:'Контакти',href:'contacts.html'}
+    ]
+  };
+
+  if(navBtn && navDrawer && navOverlay && navClose && navList){
+    /* render quick chips */
+    if(navQuick){
+      navQuick.innerHTML = MENU.quick.map(function(q){
+        return '<a class="chip '+(q.type||'')+'" href="'+q.href+'">'+q.label+'</a>';
+      }).join('');
+    }
+
+    /* render nav items */
+    var html='';
+    MENU.items.forEach(function(item){
+      if(item.type==='link'){
+        html+='<a class="navLink" href="'+item.href+'">'+item.label+'</a>';
+      } else {
+        var ch = item.children.map(function(c){
+          return '<a href="'+c.href+'">'+c.label+'</a>';
+        }).join('');
+        html+='<button class="navGroup" data-acc="'+item.id+'"><span>'+item.label+'</span><span class="chev">▾</span></button>';
+        html+='<div class="navSub" id="nav-sub-'+item.id+'" style="height:0"><div class="navSub__inner">'+ch+'</div></div>';
+      }
+    });
+    navList.innerHTML = html;
+
+    /* accordion */
+    navList.addEventListener('click',function(e){
+      var g = e.target.closest('.navGroup');
+      if(!g) return;
+      var key = g.getAttribute('data-acc');
+      var panel = document.getElementById('nav-sub-'+key);
+      if(!panel) return;
+      var willOpen = !g.classList.contains('isOpen');
+      /* close others */
+      navList.querySelectorAll('.navGroup.isOpen').forEach(function(og){
+        if(og===g) return;
+        og.classList.remove('isOpen');
+        var op = document.getElementById('nav-sub-'+og.getAttribute('data-acc'));
+        if(op) op.style.height='0';
+      });
+      g.classList.toggle('isOpen',willOpen);
+      if(willOpen){
+        var inner = panel.querySelector('.navSub__inner');
+        panel.style.height = (inner?inner.scrollHeight:0)+'px';
+      } else {
+        panel.style.height='0';
+      }
+    });
+
+    /* search filter */
+    if(navSearch){
+      navSearch.addEventListener('input',function(){
+        var q = navSearch.value.trim().toLowerCase();
+        if(!q){
+          navList.querySelectorAll('a,.navGroup').forEach(function(el){el.style.display='';});
+          return;
+        }
+        navList.querySelectorAll('.navLink').forEach(function(a){
+          a.style.display = a.textContent.toLowerCase().includes(q)?'':'none';
+        });
+        navList.querySelectorAll('.navGroup').forEach(function(g){
+          var key = g.getAttribute('data-acc');
+          var panel = document.getElementById('nav-sub-'+key);
+          var links = panel?panel.querySelectorAll('a'):[];
+          var any = false;
+          links.forEach(function(l){
+            var ok = l.textContent.toLowerCase().includes(q);
+            l.style.display = ok?'':'none';
+            if(ok) any=true;
+          });
+          g.style.display = any?'':'none';
+          if(any && panel){
+            g.classList.add('isOpen');
+            var inner = panel.querySelector('.navSub__inner');
+            panel.style.height=(inner?inner.scrollHeight:0)+'px';
+          }
+        });
+      });
+    }
+
+    function openDrawer(){
+      navDrawer.classList.add('isOpen');
+      navOverlay.classList.add('visible');
+      navBtn.setAttribute('aria-expanded','true');
+      document.documentElement.style.overflow='hidden';
+      setTimeout(function(){if(navSearch)navSearch.focus();},80);
+    }
+    function closeDrawer(){
+      navDrawer.classList.remove('isOpen');
+      navOverlay.classList.remove('visible');
+      navBtn.setAttribute('aria-expanded','false');
+      document.documentElement.style.overflow='';
+    }
+    navBtn.addEventListener('click',openDrawer);
+    navClose.addEventListener('click',closeDrawer);
+    navOverlay.addEventListener('click',closeDrawer);
+    window.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDrawer();closeSearch();}});
+  }
+
+  /* ══ SITE SEARCH ════════════════════════════════════ */
+  var searchBtn    = document.getElementById('searchBtn');
+  var siteSearch   = document.getElementById('siteSearch');
+  var searchClose  = document.getElementById('searchClose');
+  var searchInput  = document.getElementById('siteSearchInput');
+  var searchMeta   = document.getElementById('siteSearchMeta');
+  var searchResults= document.getElementById('siteSearchResults');
+  var searchOverlay= document.getElementById('searchOverlay');
+
+  var SEARCH_DB = [
+    /* pages */
+    {t:'Головна',d:'Головна сторінка лікарні',h:'index.html'},
+    {t:'Про лікарню',d:'Про лікарню, адміністрація, історія',h:'about.html'},
+    {t:'Адміністрація',d:'Керівництво та адміністрація лікарні',h:'about.html#administration'},
+    {t:'Всі лікарі',d:'Каталог лікарів з фільтром за відділенням',h:'doctors.html'},
+    {t:'Наші фахівці',d:'Спеціалісти лікарні',h:'specialists.html'},
+    {t:'Наші підрозділи',d:'Відділення та служби лікарні',h:'departments.html'},
+    {t:'Для пацієнтів',d:'Права пацієнтів, госпіталізація, платні послуги',h:'patients.html'},
+    {t:'Права пацієнтів',d:'Права та обовязки пацієнта',h:'patients.html#rights'},
+    {t:'Госпіталізація',d:'Порядок госпіталізації до стаціонару',h:'patients.html#hospitalization'},
+    {t:'Платні послуги',d:'Перелік платних медичних послуг',h:'patients.html#paid'},
+    {t:'Публічна інформація',d:'Закупівлі, пожертви, медикаменти',h:'public.html'},
+    {t:'Контакти',d:'Телефони, адреса, онлайн-запис',h:'contacts.html'},
+    {t:'Ліцензії та сертифікати',d:'Ліцензії на медичну діяльність',h:'licenses.html'},
+    {t:'Вакансії',d:'Відкриті вакансії для медичного персоналу',h:'vacancies.html'},
+    /* doctors */
+    {t:'Кушнірська Олена — психіатр',d:'Лікар-психіатр вищої категорії',h:'doctors.html'},
+    {t:'Петренко Василь — кардіолог',d:'Кардіолог вищої категорії',h:'doctors.html'},
+    {t:'Сидоренко Тетяна — невролог',d:'Невролог першої категорії',h:'doctors.html'},
+    {t:'Бондаренко Ігор — хірург',d:'Хірург вищої категорії, к.м.н.',h:'doctors.html'},
+    {t:'Мороз Ірина — гінеколог',d:'Акушер-гінеколог вищої категорії',h:'doctors.html'},
+    {t:'Громова Юлія — ендокринолог',d:'Ендокринолог, цукровий діабет',h:'doctors.html'},
+    {t:'Захаренко Людмила — офтальмолог',d:'Лікування глаукоми та катаракти',h:'doctors.html'},
+    {t:'Кириленко Павло — нейрохірург',d:'Нейрохірург, д.м.н.',h:'doctors.html'},
+    /* departments */
+    {t:'Кардіологія',d:'Діагностика та лікування захворювань серця',h:'departments.html'},
+    {t:'Неврологія',d:'Інсульт, мігрень, захворювання хребта',h:'departments.html'},
+    {t:'Нейрохірургія',d:'Операції на мозку та хребті',h:'departments.html'},
+    {t:'Гінекологія та акушерство',d:'Ведення вагітності, пологи',h:'departments.html'},
+    {t:'Ендокринологія',d:'Цукровий діабет, щитоподібна залоза',h:'departments.html'},
+    {t:'Офтальмологія',d:'Глаукома, катаракта, сітківка',h:'departments.html'},
+    {t:'Ортопедія',d:'Ендопротезування, травми, артроскопія',h:'departments.html'},
+    {t:'Хірургія',d:'Лапароскопічна та відкрита хірургія',h:'departments.html'},
+    {t:'Реабілітація',d:'Фізіотерапія та відновлення',h:'departments.html'},
+    {t:'Психіатрія',d:'Психіатрія та психотерапія',h:'departments.html'},
+    {t:'Пульмонологія',d:'Бронхіальна астма, ХОЗЛ',h:'departments.html'},
+    {t:'Гастроентерологія',d:'Захворювання ШКТ',h:'departments.html'},
+    {t:'Клінічна лабораторія',d:'Аналізи та дослідження',h:'departments.html'},
+    {t:'УЗД та ехокардіографія',d:'Ультразвукова діагностика',h:'departments.html'},
+    {t:'Комп\'ютерна томографія',d:'КТ та рентгенологія',h:'departments.html'},
+    /* contacts */
+    {t:'Онлайн-запис h24.ua',d:'Запис на прийом через Інтернет',h:'https://h24.ua/organizacia/7856-knp-hor-okl'},
+    {t:'Довідкова 057 705-67-22',d:'Телефон довідкової служби',h:'contacts.html'},
+    {t:'Реєстратура 057 705-66-91',d:'Телефон реєстратури поліклініки',h:'contacts.html'}
+  ];
+
+  function openSearch(){
+    if(!siteSearch) return;
+    siteSearch.classList.add('is-open');
+    document.documentElement.style.overflow='hidden';
+    setTimeout(function(){if(searchInput)searchInput.focus();},40);
+  }
+  function closeSearch(){
+    if(!siteSearch) return;
+    siteSearch.classList.remove('is-open');
+    document.documentElement.style.overflow='';
+    if(searchInput) searchInput.value='';
+    if(searchResults) searchResults.innerHTML='';
+    if(searchMeta) searchMeta.textContent='Почніть вводити запит для пошуку';
+  }
+
+  if(searchBtn) searchBtn.addEventListener('click',openSearch);
+  if(searchClose) searchClose.addEventListener('click',closeSearch);
+  if(searchOverlay) searchOverlay.addEventListener('click',closeSearch);
+
+  if(searchInput){
+    searchInput.addEventListener('input',function(){
+      var q = searchInput.value.trim().toLowerCase();
+      if(!q){ if(searchMeta) searchMeta.textContent='Почніть вводити запит для пошуку'; if(searchResults) searchResults.innerHTML=''; return; }
+      var res = SEARCH_DB.filter(function(it){ return (it.t+' '+it.d).toLowerCase().includes(q); }).slice(0,12);
+      if(searchResults){
+        searchResults.innerHTML = res.length
+          ? res.map(function(it){ return '<a class="siteSearch__result" href="'+it.h+'"><h4>'+it.t+'</h4><p>'+it.d+'</p></a>'; }).join('')
+          : '<p class="siteSearch__empty">Нічого не знайдено</p>';
+      }
+      if(searchMeta) searchMeta.textContent = res.length ? 'Знайдено: '+res.length : '';
+    });
+  }
+
+  /* ══ DEPT FILTER (departments page) ════════════════ */
+  document.querySelectorAll('.deptFilter__btn[data-dept-filter]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var cat = this.getAttribute('data-dept-filter');
+      document.querySelectorAll('.deptFilter__btn[data-dept-filter]').forEach(function(b){ b.classList.remove('is-active'); });
+      this.classList.add('is-active');
+      document.querySelectorAll('.serviceCard[data-dept-cat]').forEach(function(c){
+        c.style.display = (cat==='all' || c.getAttribute('data-dept-cat')===cat)?'':'none';
+      });
+    });
+  });
+
+  /* ══ DOCTORS FILTER (doctors page) ═════════════════ */
+  var doctorGrid = document.getElementById('doctorsGrid');
+  var doctorEmpty = document.getElementById('doctorsEmpty');
+  var doctorSearchInput = document.getElementById('doctorSearchInput');
+
+  function filterDoctors(){
+    if(!doctorGrid) return;
+    var dept = (document.querySelector('.deptFilter__btn[data-dept].is-active')||{getAttribute:function(){return 'all';}}).getAttribute('data-dept');
+    var q = doctorSearchInput ? doctorSearchInput.value.trim().toLowerCase() : '';
+    var cards = doctorGrid.querySelectorAll('.doctorCard');
+    var visible = 0;
+    cards.forEach(function(c){
+      var matchDept = dept==='all' || c.getAttribute('data-dept')===dept;
+      var name = (c.getAttribute('data-name')||'').toLowerCase();
+      var bodyText = c.textContent.toLowerCase();
+      var matchQ = !q || name.includes(q) || bodyText.includes(q);
+      var show = matchDept && matchQ;
+      c.hidden = !show;
+      if(show) visible++;
+    });
+    if(doctorEmpty) doctorEmpty.style.display = visible===0?'block':'none';
+  }
+
+  document.querySelectorAll('.deptFilter__btn[data-dept]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.deptFilter__btn[data-dept]').forEach(function(b){ b.classList.remove('is-active'); });
+      this.classList.add('is-active');
+      filterDoctors();
+    });
+  });
+
+  if(doctorSearchInput) doctorSearchInput.addEventListener('input', filterDoctors);
+
+  /* ══ ACCORDION ══════════════════════════════════════ */
+  document.querySelectorAll('.accordion__trigger').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = this.closest('.accordion__item');
+      if(item) item.classList.toggle('is-open');
+    });
+  });
+
+  /* ══ REVEAL ANIMATIONS ══════════════════════════════ */
+  var reveals = document.querySelectorAll('.reveal');
+  if(reveals.length && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('isIn'); io.unobserve(e.target); } });
+    },{threshold:0.12});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('isIn'); });
+  }
+
+  /* ══ AI CONSULTANT ══════════════════════════════════ */
+  var aiPanel    = document.getElementById('ai-panel');
+  var aiTrigger  = document.getElementById('ai-trigger');
+  var aiOpenBtn  = document.getElementById('ai-open-btn');
+  var aiCloseBtn = document.getElementById('ai-close-btn');
+  var aiInput    = document.getElementById('ai-input');
+  var aiSendBtn  = document.getElementById('ai-send-btn');
+  var aiMsgs     = document.getElementById('ai-messages');
+  var aiChipsEl  = document.getElementById('ai-chips');
+
+  if(!aiPanel || !aiOpenBtn) return;
+
+  var AI_OPEN = false;
+  var AI_LOADING = false;
+  var AI_HISTORY = [];
+
+  function aiToggle(){
+    AI_OPEN = !AI_OPEN;
+    aiPanel.classList.toggle('open', AI_OPEN);
+    var badge = aiTrigger ? aiTrigger.querySelector('.ai-badge') : null;
+    if(badge) badge.style.display = AI_OPEN ? 'none' : '';
+    if(AI_OPEN && aiInput) aiInput.focus();
+  }
+
+  function aiAddMsg(role, html){
+    if(!aiMsgs) return;
+    var d = document.createElement('div');
+    d.className = 'msg '+role;
+    var safe = String(html||'')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    if(role==='bot'){
+      d.innerHTML='<div class="msg-av">А</div><div class="bubble">'+safe+'</div>';
+    } else {
+      d.innerHTML='<div class="bubble">'+safe+'</div>';
+    }
+    aiMsgs.appendChild(d);
+    aiMsgs.scrollTop = aiMsgs.scrollHeight;
+  }
+
+  function aiShowTyping(){
+    if(!aiMsgs) return;
+    var d=document.createElement('div');
+    d.className='msg bot'; d.id='ai-typing';
+    d.innerHTML='<div class="msg-av">А</div><div class="bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+    aiMsgs.appendChild(d); aiMsgs.scrollTop=aiMsgs.scrollHeight;
+  }
+  function aiHideTyping(){ var el=document.getElementById('ai-typing'); if(el) el.remove(); }
+
+  /* ── LOCAL AI RULES ENGINE ───────────────────────── */
+  var CONTACTS_TEXT = [
+    'Ось контакти КНП ХОР «ОКЛ»:',
+    '',
+    '📞 **Довідкова:** 057 705-67-22, 057 704-70-79',
+    '📞 **Реєстратура поліклініки:** 057 705-66-91, 057 704-72-75',
+    '📱 **Мобільні:** 093-972-75-02, 093-971-41-13',
+    '📞 **Жіноча консультація:** 057 704-72-21',
+    '',
+    '🌐 **Онлайн-запис:** h24.ua/organizacia/7856-knp-hor-okl',
+    '',
+    '📍 **Адреса:** м. Харків, пр. Незалежності, 13',
+    '(вхід з вул. Літературної, метро «Університет»)',
+    '',
+    '🏥 **Стаціонар:** цілодобово (24/7)',
+    '🏢 **Поліклініка:** пн–пт 08:00–15:42'
+  ].join('\n');
+
+  var RULES = [
+    {kw:/серцев.*напад|інсульт|не дихає|задихаю|зупинка серця|непритомн|дуже сильний біль у груд|швидку/i,
+     ans:'🚨 **Увага! Терміново телефонуйте 103** або 112!\n\nЦі симптоми потребують негайної медичної допомоги — не чекайте, викликайте швидку. Якщо є можливість — самостійно доїжджайте до приймального відділення (пр. Незалежності, 13, цілодобово).'},
+    {kw:/^(привіт|вітаю|добрий|доброго|добрий день|доброго дня|добрий ранок|доброго ранку|добрий вечір|доброго вечора|hello|hi|здравствуй|здрасте|хай)\b/i,
+     ans:'Вітаю! Я Анна, медичний помічник Обласної клінічної лікарні Харкова.\n\nОпишіть ваші симптоми або запитання — підкажу, до якого **лікаря-спеціаліста** вам звернутися та як записатися. Я не ставлю діагнозів і не призначаю лікування.'},
+    {kw:/дякую|спасибі/i,
+     ans:'Будь ласка! Піклуйтеся про своє здоров\'я. Якщо виникнуть ще питання — завжди тут. 🌿'},
+    {kw:/запис|записат|як потрапит|прийом|талон|онлайн|h24/i,
+     ans:'Записатися на консультацію можна кількома способами:\n\n🌐 **Онлайн:** h24.ua/organizacia/7856-knp-hor-okl\n📞 **Реєстратура:** 057 705-66-91, 057 704-72-75\n📱 **Мобільні:** 093-972-75-02, 093-971-41-13\n\n🏢 **Поліклініка:** пн–пт 08:00–15:42\n🏥 **Стаціонар:** цілодобово (24/7)'},
+    {kw:/телефон|номер|контакт|адрес|як зв\'язат|як зателефон|де знаходит|як доїхат|метро|добратис/i,
+     ans:CONTACTS_TEXT},
+    {kw:/робочий час|графік|коли відкрит|час роботи|режим роботи|до якої|з якої/i,
+     ans:'Графік роботи КНП ХОР «ОКЛ»:\n\n🏥 **Стаціонар:** цілодобово (24/7)\n🏢 **Поліклініка:** понеділок–п\'ятниця, 08:00–15:42\n🤰 **Жіноча консультація:** 057 704-72-21\n\nПо вихідних — тільки ургентна допомога (стаціонар).'},
+    {kw:/серц|аритм|тиск|серцебиття|задишк|кардіо|стенокард|інфаркт|груд.*біл|біл.*груд/i,
+     ans:'За скаргами на серце, підвищений/знижений тиск, аритмію або задишку рекомендую звернутися до **кардіолога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua\n\n*Якщо симптоми різко погіршилися або ви відчуваєте гострий біль — негайно телефонуйте 103.*'},
+    {kw:/голов.*біл|біл.*голов|мігрень|запаморочен|оніміння|слабкіст.*руки|слабкіст.*ноги|хребет|спина|неврологія|нервов|сон.*порушен|тремт|координац/i,
+     ans:'Такі скарги (головний біль, запаморочення, оніміння, проблеми зі спиною або хребтом) — привід звернутися до **невролога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua\n\n*Якщо є раптова слабкість у половині тіла, порушення мовлення або різкий головний біль — це може бути ознакою інсульту, терміново телефонуйте 103!*'},
+    {kw:/очі|зір|зорові|сльозоточ|глаукома|катаракта|сітківк|офтальмо|темніє.*очах|мушки.*зору/i,
+     ans:'За проблемами зі зором, сльозотечею, симптомами глаукоми або катаракти рекомендую звернутися до **офтальмолога** (лікаря-окуліста).\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/суглоб|перелом|травм|колін|плечо|стегн|ортопед|кульгавість|артроз|протезування/i,
+     ans:'За травмами, болями у суглобах, переломами або захворюваннями опорно-рухового апарату рекомендую **ортопеда-травматолога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua\n\n*При гострих травмах — відділення цілодобово (стаціонар).*'},
+    {kw:/цукров.*діабет|діабет|щитоподібн|гормон|ендокрин|ожиріння|схуднен|тиреоїд/i,
+     ans:'Скарги, пов\'язані з цукровим діабетом, щитоподібною залозою або гормональними порушеннями — до **ендокринолога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/ревматизм|ревматоїдн|подагра|артрит.*запальн|суглоби.*набряк|ревматолог/i,
+     ans:'За симптомами ревматоїдного артриту, подагри або системних захворювань сполучної тканини рекомендую звернутися до **ревматолога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/кашел|астма|бронхіт|легені|хозл|алергія|нежить|пульмонолог/i,
+     ans:'Скарги на кашель, задишку, бронхіальну астму або алергічні реакції — привід відвідати **пульмонолога/алерголога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/шлун|кишечник|печінк|гастрит|виразк|нудота|блювот|жовчний|рефлюкс|здуття/i,
+     ans:'Проблеми зі шлунком, кишечником, печінкою або підшлунковою залозою — звертайтеся до **гастроентеролога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/нейрохірург|грижа.*диск|міжхребцев.*грижа|пухлин.*мозку|черепно-мозков/i,
+     ans:'При підозрі на грижу міжхребцевого диска, пухлини головного або спинного мозку рекомендую консультацію **нейрохірурга**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/апендицит|жовчнокам|лапароскоп/i,
+     ans:'За хірургічними скаргами (апендицит, грижа, жовчнокам\'яна хвороба тощо) рекомендую **хірурга загального профілю**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua\n\n*При гострому болю — стаціонар приймає цілодобово.*'},
+    {kw:/шкіра|висипання|дерматит|псоріаз|екзема|акне|дерматолог/i,
+     ans:'Проблеми зі шкірою, висипання, дерматит або підозра на шкірні захворювання — **дерматолог** вам допоможе.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/зуб|ясна|стоматолог|карієс|щелеп/i,
+     ans:'За стоматологічними питаннями звертайтеся до **стоматолога** нашої лікарні.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/вагітніст|вагітна|гінекологія|гінеколог|акушер|місячн|менструац|яєчник|матка|жіноч.*консультац/i,
+     ans:'Питання вагітності, гінекологічні скарги або планування — звертайтеся до **акушера-гінеколога** або до жіночої консультації.\n\n📞 **Жіноча консультація:** 057 704-72-21\n📞 Реєстратура: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/нирки|нирков|сечовий|пієлонефрит|нефролог/i,
+     ans:'Проблеми з нирками або сечовивідними шляхами (набряки, болі, зміни в аналізах) — **нефролог** допоможе.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/гемоглобін|анемія|тромбоцит|лейкоцит|гематолог/i,
+     ans:'Зміни в аналізах крові (анемія, зміни лейкоцитів/тромбоцитів) — привід відвідати **гематолога**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/депресія|тривог|панічна.*атак|психіатр|безсонн|нервов.*зрив/i,
+     ans:'Якщо вас турбують емоційний стан, тривога, депресія або порушення сну — рекомендую консультацію **психіатра**. Це звично і правильно — піклуватися про психічне здоров\'я.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/реабілітац|відновлен|фізіотерап|після.*операц/i,
+     ans:'Для відновлення після операції або хвороби — **відділення реабілітації та фізіотерапії**.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'},
+    {kw:/аналіз|узд|ультразвук|рентген|ехокардіограм|ендоскоп|гастроскоп|колоноскоп|томограф/i,
+     ans:'В нашій лікарні є повний спектр діагностики:\n\n🔬 Клінічна лабораторія (аналізи)\n📡 УЗД та ехокардіографія\n🩻 Рентген та КТ\n📊 Функціональна діагностика\n🔭 Ендоскопія\n\nНаправлення видає лікар-спеціаліст.\n\n📞 Запис: 057 705-66-91 або онлайн h24.ua'}
+  ];
+
+  function localAnswer(text){
+    var t = (text||'').trim();
+    for(var i=0;i<RULES.length;i++){
+      if(RULES[i].kw.test(t)) return RULES[i].ans;
+    }
+    return 'Дякую за ваше запитання.\n\nОпишіть детальніше ваші **симптоми або скарги** — я підкажу, до якого спеціаліста вам краще звернутися.\n\nАбо зв\'яжіться з нашою реєстратурою:\n📞 **057 705-66-91** / **057 704-72-75**\n📱 **093-972-75-02**\n🌐 Онлайн-запис: h24.ua/organizacia/7856-knp-hor-okl';
+  }
+
+  async function callAI(messages){
+
+    /* ── 1. Google Gemini 2.0 Flash ─────────────────── */
+    if(window.OKL_GEMINI_KEY){
+      try{
+        var contents=[];
+        for(var k=0;k<messages.length;k++){
+          contents.push({
+            role: messages[k].role==='user'?'user':'model',
+            parts:[{text: messages[k].content}]
+          });
+        }
+        var gBody={
+          system_instruction:{parts:[{text:SYSTEM_PROMPT_LOCAL}]},
+          contents:contents,
+          generationConfig:{maxOutputTokens:700,temperature:0.7},
+          safetySettings:[
+            {category:'HARM_CATEGORY_DANGEROUS_CONTENT',threshold:'BLOCK_NONE'},
+            {category:'HARM_CATEGORY_HARASSMENT',        threshold:'BLOCK_NONE'},
+            {category:'HARM_CATEGORY_HATE_SPEECH',       threshold:'BLOCK_NONE'},
+            {category:'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold:'BLOCK_NONE'}
+          ]
+        };
+        var gr=await fetch(
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+window.OKL_GEMINI_KEY,
+          {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(gBody)}
+        );
+        var gd=await gr.json();
+        if(!gr.ok){ console.warn('Gemini error:',gd.error&&gd.error.message); }
+        else{
+          var gParts=gd.candidates&&gd.candidates[0]&&gd.candidates[0].content&&gd.candidates[0].content.parts;
+          var gt=gParts&&gParts.length>0&&gParts[0].text;
+          if(gt) return gt;
+          console.warn('Gemini empty, finishReason:',gd.candidates&&gd.candidates[0]&&gd.candidates[0].finishReason);
+        }
+      }catch(e){ console.warn('Gemini exception:',e.message); }
+    }
+
+    /* ── 2. OpenAI / ChatGPT ────────────────────────── */
+    if(window.OKL_OPENAI_KEY){
+      try{
+        var omsgs=[{role:'system',content:SYSTEM_PROMPT_LOCAL}].concat(messages);
+        var or_=await fetch('https://api.openai.com/v1/chat/completions',{
+          method:'POST',
+          headers:{'Content-Type':'application/json','Authorization':'Bearer '+window.OKL_OPENAI_KEY},
+          body:JSON.stringify({model:'gpt-4o-mini',messages:omsgs,max_tokens:700})
+        });
+        var od=await or_.json();
+        if(!or_.ok){ console.warn('OpenAI error:',od.error&&od.error.message); }
+        else{
+          var ot=od.choices&&od.choices[0]&&od.choices[0].message&&od.choices[0].message.content;
+          if(ot) return ot;
+        }
+      }catch(e){ console.warn('OpenAI exception:',e.message); }
+    }
+
+    /* ── 3. Claude через серверний proxy ────────────── */
+    var endpoints=[];
+    if(window.OKL_AI_ENDPOINT) endpoints.push(window.OKL_AI_ENDPOINT);
+    endpoints.push('/api/ai-consultant','/ai-consultant-proxy.php');
+    for(var i=0;i<endpoints.length;i++){
+      try{
+        var r=await fetch(endpoints[i],{
+          method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({system:SYSTEM_PROMPT_LOCAL,messages:messages})
+        });
+        if(r.ok){var d=await r.json();if(d&&d.reply)return d.reply;}
+      }catch(e){}
+    }
+
+    /* ── 4. Локальний fallback ───────────────────────── */
+    var lastMsg='';
+    for(var j=messages.length-1;j>=0;j--){
+      if(messages[j].role==='user'){lastMsg=messages[j].content;break;}
+    }
+    return localAnswer(lastMsg);
+  }
+
+  async function aiSend(){
+    if(AI_LOADING || !aiInput) return;
+    var txt = aiInput.value.trim();
+    if(!txt) return;
+    aiInput.value=''; aiInput.style.height='auto';
+    aiAddMsg('user', txt);
+    AI_HISTORY.push({role:'user',content:txt});
+    if(aiChipsEl) aiChipsEl.style.display='none';
+    aiShowTyping(); AI_LOADING=true;
+    try{
+      var reply = await callAI(AI_HISTORY.slice(-14));
+      AI_HISTORY.push({role:'assistant',content:reply});
+      aiHideTyping(); aiAddMsg('bot', reply);
+    } catch(e){
+      aiHideTyping();
+      aiAddMsg('bot','Вибачте, виникла технічна помилка. Будь ласка, зверніться до нас:\n📞 **057 705-67-22** (довідкова)\n📞 **057 705-66-91** (реєстратура)\n\nАбо запишіться онлайн: **h24.ua**');
+    }
+    AI_LOADING=false;
+  }
+
+  aiOpenBtn.addEventListener('click', aiToggle);
+  if(aiCloseBtn) aiCloseBtn.addEventListener('click', aiToggle);
+  if(aiSendBtn) aiSendBtn.addEventListener('click', aiSend);
+  if(aiInput){
+    aiInput.addEventListener('keydown',function(e){
+      if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();aiSend();}
+    });
+    aiInput.addEventListener('input',function(){
+      this.style.height='auto';
+      this.style.height=Math.min(this.scrollHeight,90)+'px';
+    });
+  }
+  document.querySelectorAll('.ai-chip').forEach(function(chip){
+    chip.addEventListener('click',function(){
+      if(!aiInput) return;
+      aiInput.value=this.textContent;
+      aiSend();
+    });
+  });
+
+}); /* end ready */
+})();
+
+  </script>
+</body>
+</html>

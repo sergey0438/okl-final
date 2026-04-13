@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Про лікарню — ОКЛ Харків</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="navOverlay" id="navOverlay"></div>
+  <aside class="navDrawer" id="navDrawer" aria-hidden="true">
+    <div class="navDrawer__top">
+      <div class="navDrawer__title">
+        <div class="navDrawer__logo"></div>
+        <div><div class="navDrawer__name">КНП ХОР «ОКЛ»</div><div class="navDrawer__sub">Харків · Незалежності, 13</div></div>
+      </div>
+      <button class="navClose" id="navClose" aria-label="Закрити">✕</button>
+    </div>
+    <div class="navDrawer__search"><input id="navSearch" type="search" placeholder="Пошук по сайту…" autocomplete="off"></div>
+    <div class="navQuick" id="navQuick"></div>
+    <nav class="navList" id="navList"></nav>
+    <div class="navDrawer__bottom"><div class="navHint">Esc — закрити · клік по фону — закрити</div></div>
+  </aside>
+  <main id="top">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Головна</a> / Про лікарню</div>
+        <h1 class="page-hero__title">Про лікарню</h1>
+        <p class="page-hero__lead">Обласна клінічна лікарня — сучасний багатопрофільний медичний центр, що поєднує діагностику, лікування та реабілітацію за європейськими стандартами.</p>
+      </div>
+    </section>
+
+    <!-- ADMINISTRATION -->
+    <section class="section section--surface" id="administration">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Керівництво</div>
+          <h2 class="section__title">Адміністрація лікарні</h2>
+          <p class="section__lead">Досвідчена команда управлінців, що забезпечує стратегічний розвиток закладу та якість медичної допомоги.</p>
+        </div>
+        <div class="adminGrid">
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">ВМ</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Волков Максим Іванович</div>
+              <div class="adminCard__role">Головний лікар, кандидат медичних наук</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">КО</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Коваленко Олена Петрівна</div>
+              <div class="adminCard__role">Заступник головного лікаря з медичної частини</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">ША</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Шевченко Андрій Олексійович</div>
+              <div class="adminCard__role">Заступник головного лікаря з хірургічної допомоги</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">МН</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Мельник Наталія Сергіївна</div>
+              <div class="adminCard__role">Головна медична сестра</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">ДВ</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Дяченко Василь Григорович</div>
+              <div class="adminCard__role">Заступник головного лікаря з економічних питань</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+          <div class="adminCard reveal">
+            <div class="adminCard__photo"><div class="admin-initials">ПІ</div></div>
+            <div class="adminCard__body">
+              <div class="adminCard__name">Павленко Ірина Вікторівна</div>
+              <div class="adminCard__role">Начальник відділу кадрів</div>
+              <div class="adminCard__phone"><a href="tel:+380577056722">057 705-67-22</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="section__cta">
+          <p style="color:var(--ink-60);font-size:14px;">Прийом громадян проводиться за попереднім записом. Довідкова: <a href="tel:+380577056722" style="color:var(--blue);font-weight:600;">057 705-67-22</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TODAY -->
+    <section class="section" id="today">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Статистика</div>
+          <h2 class="section__title">Ми сьогодні</h2>
+        </div>
+        <div class="stats">
+          <div class="stat reveal"><b>40+</b><span style="font-size:14px;color:var(--ink-60)">відділень та служб</span></div>
+          <div class="stat reveal"><b>1 200+</b><span style="font-size:14px;color:var(--ink-60)">кваліфікованих фахівців</span></div>
+          <div class="stat reveal"><b>250k+</b><span style="font-size:14px;color:var(--ink-60)">пацієнтів щороку</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="section section--surface" id="history">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__kicker">Від 1950 року</div>
+          <h2 class="section__title">Історія лікарні</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline__item reveal"><strong>1950-ті:</strong> Заснування лікарні як регіонального медичного центру Харківської області.</div>
+          <div class="timeline__item reveal"><strong>1970–1990:</strong> Розширення матеріально-технічної бази, відкриття нових спеціалізованих відділень.</div>
+          <div class="timeline__item reveal"><strong>2000-ні:</strong> Впровадження сучасних діагностичних технологій, оновлення обладнання.</div>
+          <div class="timeline__item reveal"><strong>2010-ні:</strong> Цифровізація медичних послуг, розвиток мультидисциплінарних команд.</div>
+          <div class="timeline__item reveal"><strong>Сьогодні:</strong> Один з провідних медичних центрів України з понад 40 відділеннями.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEES -->
+    <section class="section" id="guarantees">
+      <div class="container split">
+        <div class="reveal">
+          <div class="section__kicker">Безоплатна допомога</div>
+          <h2 class="section__title">Програма медичних гарантій</h2>
+          <p style="color:var(--ink-60);line-height:1.75;">Лікарня надає медичну допомогу в рамках Програми медичних гарантій НСЗУ. Широкий спектр послуг доступний безоплатно для всіх громадян України.</p>
+          <ul class="list-check" style="margin-top:16px;">
+            <li>Первинна та вторинна медична допомога</li>
+            <li>Екстрена та невідкладна допомога цілодобово</li>
+            <li>Стаціонарне лікування за направленням</li>
+            <li>Діагностичні дослідження в рамках ПМГ</li>
+          </ul>
+        </div>
+        <div class="info-card reveal">
+          <h3>Записатися</h3>
+          <p>Для консультації та запису на прийом скористайтеся онлайн-записом або зателефонуйте до реєстратури.</p>
+          <a class="btn btn--primary" href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener" style="margin-top:14px;">Онлайн-запис</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- ═══ FOOTER ════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo-wrap">
+            <div class="footer__logo-img"></div>
+            <div>
+              <div class="footer__brand-name">Обласна клінічна лікарня</div>
+              <div class="footer__brand-sub">КНП ХОР «ОКЛ» · Харків</div>
+            </div>
+          </div>
+          <p class="footer__desc">Багатопрофільний медичний центр. Діагностика, лікування та реабілітація за сучасними стандартами.</p>
+          <div class="footer__socials">
+            <a class="footer__social" href="https://www.instagram.com/okl_kharkiv/" target="_blank" rel="noopener" aria-label="Instagram">In</a>
+            <a class="footer__social" href="#" aria-label="Facebook">Fb</a>
+            <a class="footer__social" href="#" aria-label="Telegram">Tg</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Про лікарню</h4>
+          <ul>
+            <li><a href="about.html#administration">Адміністрація</a></li>
+            <li><a href="about.html#today">Ми сьогодні</a></li>
+            <li><a href="about.html#history">Історія лікарні</a></li>
+            <li><a href="doctors.html">Наші лікарі</a></li>
+            <li><a href="news.html">Новини</a></li>
+            <li><a href="licenses.html">Ліцензії та сертифікати</a></li>
+            <li><a href="vacancies.html">Вакансії</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Пацієнтам</h4>
+          <ul>
+            <li><a href="patients.html#rights">Права пацієнтів</a></li>
+            <li><a href="patients.html#visits">Порядок відвідування</a></li>
+            <li><a href="patients.html#hospitalization">Госпіталізація</a></li>
+            <li><a href="patients.html#paid">Платні послуги</a></li>
+            <li><a href="departments.html">Наші підрозділи</a></li>
+            <li><a href="public.html">Публічна інформація</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Контакти</h4>
+          <div class="footer__contact-item">
+            <span class="label">Довідкова</span>
+            <a href="tel:+380577056722">057 705-67-22</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Реєстратура</span>
+            <a href="tel:+380577056691">057 705-66-91</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Адреса</span>
+            <span>пр. Незалежності, 13, Харків</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Онлайн-запис</span>
+            <a href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener">h24.ua →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© 2026 КНП ХОР «Обласна клінічна лікарня», Харків</span>
+        <a href="#top">Вгору ↑</a>
+      </div>
+    </div>
+  </footer>
+  <!-- SITE SEARCH -->
+  <div class="siteSearch" id="siteSearch" aria-hidden="true">
+    <div class="siteSearch__overlay" id="searchOverlay"></div>
+    <div class="siteSearch__panel" role="dialog" aria-modal="true">
+      <div class="siteSearch__head">
+        <h3>Пошук по сайту</h3>
+        <button class="siteSearch__close" id="searchClose">✕</button>
+      </div>
+      <input class="siteSearch__input" id="siteSearchInput" type="search" placeholder="Введіть прізвище лікаря або відділення">
+      <div class="siteSearch__meta" id="siteSearchMeta">Почніть вводити запит для пошуку</div>
+      <div class="siteSearch__results" id="siteSearchResults"></div>
+    </div>
+  </div>
+
+  <button id="scroll-top" class="scrollTop" aria-label="Вгору">↑</button>
+
+  <!-- AI CONSULTANT -->
+  <div id="ai-trigger">
+    <div class="ai-badge">Анна — медичний помічник</div>
+    <button id="ai-open-btn" class="ai-fab" aria-label="Відкрити ІІ-консультанта">
+      <div class="ai-ring"></div>
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    </button>
+  </div>
+  <div id="ai-panel">
+    <div class="ai-hdr">
+      <div class="ai-av">А</div>
+      <div class="ai-hdr-txt"><strong>Анна — медичний помічник</strong><span><span class="ai-dot"></span>Онлайн · КНП ХОР «ОКЛ»</span></div>
+      <button id="ai-close-btn" class="ai-x">✕</button>
+    </div>
+    <div class="ai-warn">Анна <strong>не ставить діагнозів</strong> і <strong>не призначає лікування</strong> — тільки допомагає знайти потрібного лікаря.</div>
+    <div class="ai-msgs" id="ai-messages">
+      <div class="msg bot"><div class="msg-av">А</div><div class="bubble">Вітаю! Я Анна — медичний помічник Обласної клінічної лікарні.<br><br>Опишіть симптоми або запитання — підкажу, до якого лікаря звернутися та як записатися. Я <strong>не ставлю діагнозів</strong>.</div></div>
+    </div>
+    <div class="chips-area" id="ai-chips">
+      <span class="chip ai-chip">Болить серце</span>
+      <span class="chip ai-chip">Проблеми зі зором</span>
+      <span class="chip ai-chip">Болить голова / спина</span>
+      <span class="chip ai-chip">Як записатися?</span>
+      <span class="chip ai-chip">Вагітність / гінекологія</span>
+      <span class="chip ai-chip">Цукровий діабет</span>
+    </div>
+    <div class="ai-foot">
+      <textarea id="ai-input" placeholder="Введіть запитання..." rows="1"></textarea>
+      <button id="ai-send-btn" class="ai-send" aria-label="Надіслати"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    </div>
+  </div>
+
+  <script>window.OKL_GEMINI_KEY = 'AIzaSyBabKpLKO_J6bPxLkew-ErMMST9ueNISXk';</script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(node --check /Users/sergey/Downloads/okl-final/script.js)",
+      "Bash(curl -s \"https://rch.kh.gov.ua/wp-json/wp/v2/posts?per_page=3&_embed\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(p.get\\('id'\\), p.get\\('date',''\\)[:10], p.get\\('title',{}\\).get\\('rendered',''\\)[:60]\\) for p in d]\")",
+      "Bash(curl -s \"https://rch.kh.gov.ua/wp-json/wp/v2/posts?per_page=1&_embed\")",
+      "Bash(python3 -c ':*)",
+      "Bash(curl -s \"https://rch.kh.gov.ua/wp-json/wp/v2/posts?per_page=10&_embed\")",
+      "Bash(curl -s -I \"https://rch.kh.gov.ua/wp-json/wp/v2/posts?per_page=3&_embed\")",
+      "Bash(curl -s -I -H \"Origin: https://example.com\" \"https://rch.kh.gov.ua/wp-json/wp/v2/posts?per_page=1\")"
+    ]
+  }
+}

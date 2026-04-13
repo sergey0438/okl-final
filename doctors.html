@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наші лікарі — ОКЛ Харків</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="navOverlay" id="navOverlay"></div>
+  <aside class="navDrawer" id="navDrawer" aria-hidden="true">
+    <div class="navDrawer__top">
+      <div class="navDrawer__title">
+        <div class="navDrawer__logo"></div>
+        <div><div class="navDrawer__name">КНП ХОР «ОКЛ»</div><div class="navDrawer__sub">Харків · Незалежності, 13</div></div>
+      </div>
+      <button class="navClose" id="navClose" aria-label="Закрити">✕</button>
+    </div>
+    <div class="navDrawer__search"><input id="navSearch" type="search" placeholder="Пошук по сайту…" autocomplete="off"></div>
+    <div class="navQuick" id="navQuick"></div>
+    <nav class="navList" id="navList"></nav>
+    <div class="navDrawer__bottom"><div class="navHint">Esc — закрити · клік по фону — закрити</div></div>
+  </aside>
+  <main id="top">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Головна</a> / Наші лікарі</div>
+        <h1 class="page-hero__title">Наші лікарі</h1>
+        <p class="page-hero__lead">Понад 1 200 кваліфікованих лікарів та фахівців. Знайдіть потрібного спеціаліста за відділенням або прізвищем.</p>
+      </div>
+    </section>
+
+    <section class="section" id="doctors-list">
+      <div class="container">
+        <!-- Search & Filter -->
+        <div class="doctorSearch">
+          <input class="doctorSearch__input" id="doctorSearchInput" type="search" placeholder="🔍  Пошук за прізвищем або спеціальністю…">
+        </div>
+        <div class="deptFilter" id="deptFilter">
+          <button class="deptFilter__btn is-active" data-dept="all">Всі відділення</button>
+          <button class="deptFilter__btn" data-dept="cardiology">Кардіологія</button>
+          <button class="deptFilter__btn" data-dept="neurology">Неврологія</button>
+          <button class="deptFilter__btn" data-dept="surgery">Хірургія</button>
+          <button class="deptFilter__btn" data-dept="orthopedics">Ортопедія</button>
+          <button class="deptFilter__btn" data-dept="gynecology">Гінекологія</button>
+          <button class="deptFilter__btn" data-dept="ophthalmology">Офтальмологія</button>
+          <button class="deptFilter__btn" data-dept="endocrinology">Ендокринологія</button>
+          <button class="deptFilter__btn" data-dept="psychiatry">Психіатрія</button>
+          <button class="deptFilter__btn" data-dept="gastro">Гастроентерологія</button>
+          <button class="deptFilter__btn" data-dept="pulmonology">Пульмонологія</button>
+        </div>
+
+        <div class="doctorsGrid" id="doctorsGrid">
+
+          <article class="doctorCard" data-dept="psychiatry" data-name="кушнірська олена іванівна психіатр">
+            <div class="doctorCard__photo">
+              <img src="assets/av-1.jpg" alt="Кушнірська Олена Іванівна" loading="lazy">
+              <span class="doctorCard__dept">Психіатрія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Кушнірська Олена Іванівна</div>
+              <div class="doctorCard__spec">Лікар-психіатр вищої категорії</div>
+              <div class="doctorCard__info">Досвід 26 років. Спеціалізація: психіатрія, психотерапія, розлади сну та тривожні стани.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="cardiology" data-name="петренко василь михайлович кардіолог">
+            <div class="doctorCard__photo">
+              <img src="assets/av-2.jpg" alt="Петренко Василь Михайлович" loading="lazy">
+              <span class="doctorCard__dept">Кардіологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Петренко Василь Михайлович</div>
+              <div class="doctorCard__spec">Кардіолог вищої категорії</div>
+              <div class="doctorCard__info">Досвід 18 років. Ехокардіографія, холтерівський моніторинг, лікування ІХС та гіпертонії.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="neurology" data-name="сидоренко тетяна андріївна невролог">
+            <div class="doctorCard__photo">
+              <img src="assets/av-3.jpg" alt="Сидоренко Тетяна Андріївна" loading="lazy">
+              <span class="doctorCard__dept">Неврологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Сидоренко Тетяна Андріївна</div>
+              <div class="doctorCard__spec">Невролог першої категорії</div>
+              <div class="doctorCard__info">Досвід 14 років. Лікування інсульту, мігрені, епілепсії та захворювань хребта.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="surgery" data-name="бондаренко ігор олексійович хірург">
+            <div class="doctorCard__photo">
+              <img src="assets/av-4.jpg" alt="Бондаренко Ігор Олексійович" loading="lazy">
+              <span class="doctorCard__dept">Хірургія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Бондаренко Ігор Олексійович</div>
+              <div class="doctorCard__spec">Хірург вищої категорії, к.м.н.</div>
+              <div class="doctorCard__info">Досвід 22 роки. Лапароскопічна хірургія, операції на органах черевної порожнини.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="gynecology" data-name="мороз ірина василівна гінеколог акушер">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">МІ</div>
+              <span class="doctorCard__dept">Гінекологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Мороз Ірина Василівна</div>
+              <div class="doctorCard__spec">Акушер-гінеколог вищої категорії</div>
+              <div class="doctorCard__info">Досвід 20 років. Ведення вагітності, оперативна гінекологія, жіноча консультація.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="orthopedics" data-name="ткаченко денис ортопед травматолог">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">ТД</div>
+              <span class="doctorCard__dept">Ортопедія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Ткаченко Денис Сергійович</div>
+              <div class="doctorCard__spec">Ортопед-травматолог вищої категорії</div>
+              <div class="doctorCard__info">Досвід 16 років. Ендопротезування суглобів, артроскопія, травми опорно-рухового апарату.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="ophthalmology" data-name="захаренко людмила офтальмолог окуліст">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">ЗЛ</div>
+              <span class="doctorCard__dept">Офтальмологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Захаренко Людмила Олегівна</div>
+              <div class="doctorCard__spec">Офтальмолог першої категорії</div>
+              <div class="doctorCard__info">Досвід 12 років. Лікування глаукоми, катаракти, дистрофій сітківки, лазерна корекція.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="endocrinology" data-name="громова юлія ендокринолог діабет">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">ГЮ</div>
+              <span class="doctorCard__dept">Ендокринологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Громова Юлія Петрівна</div>
+              <div class="doctorCard__spec">Ендокринолог вищої категорії</div>
+              <div class="doctorCard__info">Досвід 15 років. Цукровий діабет, захворювання щитоподібної залози, порушення обміну речовин.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="gastro" data-name="левченко роман гастроентеролог">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">ЛР</div>
+              <span class="doctorCard__dept">Гастроентерологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Левченко Роман Іванович</div>
+              <div class="doctorCard__spec">Гастроентеролог першої категорії</div>
+              <div class="doctorCard__info">Досвід 11 років. Захворювання шлунково-кишкового тракту, ендоскопічна діагностика.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="pulmonology" data-name="яценко марина пульмонолог алерголог">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">ЯМ</div>
+              <span class="doctorCard__dept">Пульмонологія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Яценко Марина Сергіївна</div>
+              <div class="doctorCard__spec">Пульмонолог-алерголог</div>
+              <div class="doctorCard__info">Досвід 9 років. Бронхіальна астма, ХОЗЛ, алергічні захворювання дихальної системи.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="neurology" data-name="кириленко павло нейрохірург">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">КП</div>
+              <span class="doctorCard__dept">Нейрохірургія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Кириленко Павло Вікторович</div>
+              <div class="doctorCard__spec">Нейрохірург вищої категорії, д.м.н.</div>
+              <div class="doctorCard__info">Досвід 25 років. Операції на головному та спинному мозку, лікування пухлин ЦНС.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="doctorCard" data-dept="cardiology" data-name="савченко олексій судинний хірург кардіохірург">
+            <div class="doctorCard__photo">
+              <div class="doctor-initials">СО</div>
+              <span class="doctorCard__dept">Кардіохірургія</span>
+            </div>
+            <div class="doctorCard__body">
+              <div class="doctorCard__name">Савченко Олексій Миколайович</div>
+              <div class="doctorCard__spec">Серцево-судинний хірург</div>
+              <div class="doctorCard__info">Досвід 19 років. Операції на серці та судинах, аортокоронарне шунтування.</div>
+              <div class="doctorCard__actions">
+                <a class="btn btn--primary btn--sm btn--wide" href="contacts.html">Записатися</a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /doctorsGrid -->
+
+        <div id="doctorsEmpty" style="display:none;text-align:center;padding:48px 0;color:var(--ink-60);">
+          <p style="font-size:18px;">Нічого не знайдено</p>
+          <p>Спробуйте змінити запит або обрати інше відділення</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface">
+      <div class="container" style="text-align:center;">
+        <div class="section__kicker">Запис на прийом</div>
+        <h2 class="section__title">Хочете потрапити до лікаря?</h2>
+        <p style="color:var(--ink-60);max-width:520px;margin:0 auto 24px;">Запишіться онлайн або зателефонуйте до реєстратури поліклініки.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener">Записатися онлайн</a>
+          <a class="btn btn--outline btn--lg" href="tel:+380577056691">057 705-66-91</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- ═══ FOOTER ════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo-wrap">
+            <div class="footer__logo-img"></div>
+            <div>
+              <div class="footer__brand-name">Обласна клінічна лікарня</div>
+              <div class="footer__brand-sub">КНП ХОР «ОКЛ» · Харків</div>
+            </div>
+          </div>
+          <p class="footer__desc">Багатопрофільний медичний центр. Діагностика, лікування та реабілітація за сучасними стандартами.</p>
+          <div class="footer__socials">
+            <a class="footer__social" href="https://www.instagram.com/okl_kharkiv/" target="_blank" rel="noopener" aria-label="Instagram">In</a>
+            <a class="footer__social" href="#" aria-label="Facebook">Fb</a>
+            <a class="footer__social" href="#" aria-label="Telegram">Tg</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Про лікарню</h4>
+          <ul>
+            <li><a href="about.html#administration">Адміністрація</a></li>
+            <li><a href="about.html#today">Ми сьогодні</a></li>
+            <li><a href="about.html#history">Історія лікарні</a></li>
+            <li><a href="doctors.html">Наші лікарі</a></li>
+            <li><a href="news.html">Новини</a></li>
+            <li><a href="licenses.html">Ліцензії та сертифікати</a></li>
+            <li><a href="vacancies.html">Вакансії</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Пацієнтам</h4>
+          <ul>
+            <li><a href="patients.html#rights">Права пацієнтів</a></li>
+            <li><a href="patients.html#visits">Порядок відвідування</a></li>
+            <li><a href="patients.html#hospitalization">Госпіталізація</a></li>
+            <li><a href="patients.html#paid">Платні послуги</a></li>
+            <li><a href="departments.html">Наші підрозділи</a></li>
+            <li><a href="public.html">Публічна інформація</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Контакти</h4>
+          <div class="footer__contact-item">
+            <span class="label">Довідкова</span>
+            <a href="tel:+380577056722">057 705-67-22</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Реєстратура</span>
+            <a href="tel:+380577056691">057 705-66-91</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Адреса</span>
+            <span>пр. Незалежності, 13, Харків</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="label">Онлайн-запис</span>
+            <a href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener">h24.ua →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© 2026 КНП ХОР «Обласна клінічна лікарня», Харків</span>
+        <a href="#top">Вгору ↑</a>
+      </div>
+    </div>
+  </footer>
+  <!-- SITE SEARCH -->
+  <div class="siteSearch" id="siteSearch" aria-hidden="true">
+    <div class="siteSearch__overlay" id="searchOverlay"></div>
+    <div class="siteSearch__panel" role="dialog" aria-modal="true">
+      <div class="siteSearch__head">
+        <h3>Пошук по сайту</h3>
+        <button class="siteSearch__close" id="searchClose">✕</button>
+      </div>
+      <input class="siteSearch__input" id="siteSearchInput" type="search" placeholder="Введіть прізвище лікаря або відділення">
+      <div class="siteSearch__meta" id="siteSearchMeta">Почніть вводити запит для пошуку</div>
+      <div class="siteSearch__results" id="siteSearchResults"></div>
+    </div>
+  </div>
+
+  <button id="scroll-top" class="scrollTop" aria-label="Вгору">↑</button>
+
+  <!-- AI CONSULTANT -->
+  <div id="ai-trigger">
+    <div class="ai-badge">Анна — медичний помічник</div>
+    <button id="ai-open-btn" class="ai-fab" aria-label="Відкрити ІІ-консультанта">
+      <div class="ai-ring"></div>
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    </button>
+  </div>
+  <div id="ai-panel">
+    <div class="ai-hdr">
+      <div class="ai-av">А</div>
+      <div class="ai-hdr-txt"><strong>Анна — медичний помічник</strong><span><span class="ai-dot"></span>Онлайн · КНП ХОР «ОКЛ»</span></div>
+      <button id="ai-close-btn" class="ai-x">✕</button>
+    </div>
+    <div class="ai-warn">Анна <strong>не ставить діагнозів</strong> і <strong>не призначає лікування</strong> — тільки допомагає знайти потрібного лікаря.</div>
+    <div class="ai-msgs" id="ai-messages">
+      <div class="msg bot"><div class="msg-av">А</div><div class="bubble">Вітаю! Я Анна — медичний помічник Обласної клінічної лікарні.<br><br>Опишіть симптоми або запитання — підкажу, до якого лікаря звернутися та як записатися. Я <strong>не ставлю діагнозів</strong>.</div></div>
+    </div>
+    <div class="chips-area" id="ai-chips">
+      <span class="chip ai-chip">Болить серце</span>
+      <span class="chip ai-chip">Проблеми зі зором</span>
+      <span class="chip ai-chip">Болить голова / спина</span>
+      <span class="chip ai-chip">Як записатися?</span>
+      <span class="chip ai-chip">Вагітність / гінекологія</span>
+      <span class="chip ai-chip">Цукровий діабет</span>
+    </div>
+    <div class="ai-foot">
+      <textarea id="ai-input" placeholder="Введіть запитання..." rows="1"></textarea>
+      <button id="ai-send-btn" class="ai-send" aria-label="Надіслати"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    </div>
+  </div>
+
+  <script>window.OKL_GEMINI_KEY = 'AIzaSyBabKpLKO_J6bPxLkew-ErMMST9ueNISXk';</script>
+  <script src="script.js"></script>
+</body>
+</html>
