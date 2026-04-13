@@ -324,6 +324,25 @@ button{font-family:var(--ff-b);cursor:pointer} input,textarea{font-family:var(--
   </style>
 </head>
 <body>
+  <header class="siteHeader" id="siteHeader">
+    <div class="container siteHeader__inner">
+      <a class="siteBrand" href="index.html">
+        <div class="siteBrand__logo"></div>
+        <div class="siteBrand__text">КНП ХОР «ОКЛ»</div>
+      </a>
+      <nav class="topNav" aria-label="Головне меню">
+        <a href="index.html">Головна</a>
+        <a href="about.html">Про лікарню</a>
+        <a href="departments.html">Підрозділи</a>
+        <a href="doctors.html">Лікарі</a>
+        <a href="contacts.html">Контакти</a>
+      </nav>
+      <div class="siteHeader__actions">
+        <a class="btn btn--ghost" href="https://h24.ua/organizacia/7856-knp-hor-okl" target="_blank" rel="noopener">Запис</a>
+        <button class="navBtn" id="navBtn" aria-label="Відкрити меню"><span class="navBtn__icon">☰</span></button>
+      </div>
+    </div>
+  </header>
   <div class="navOverlay" id="navOverlay"></div>
   <aside class="navDrawer" id="navDrawer" aria-hidden="true">
     <div class="navDrawer__top">
